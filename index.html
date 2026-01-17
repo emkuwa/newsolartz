@@ -100,13 +100,9 @@ function renderDirectory(companies) {
     const description = currentLang === "en" ? c.description_en : c.description_sw;
     const cta = currentLang === "en" ? c.cta_whatsapp_en : c.cta_whatsapp_sw;
 
-    card.innerHTML = `
-      <h3>${c.business_name}</h3>
-      <small>${c.category} • ${c.region}</small>
-      <h4>${headline}</h4>
-      <p>${description}</p>
-      <a class="btn" href="https://wa.me/" target="_blank">${cta}</a>
-    `;
+    card.onclick = () => {
+  window.location.href = "company.html?slug=" + c.slug;
+};
 
     container.appendChild(card);
   });
