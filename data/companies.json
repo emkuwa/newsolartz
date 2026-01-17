@@ -1,0 +1,43 @@
+[
+  {
+    "id": "sunpower-solar-dar",
+    "business_name": "SunPower Solar Tanzania",
+    "category": "Solar Installer",
+    "region": "Dar es Salaam",
+    "district": "Kinondoni",
+    "headline_en": "Reliable Solar Installation Experts",
+    "headline_sw": "Wataalamu wa Ufungaji wa Solar wa Kuaminika",
+    "description_en": "SunPower Solar Tanzania provides professional solar installation, maintenance, and supply of high-quality solar equipment for homes and businesses.",
+    "description_sw": "SunPower Solar Tanzania hutoa huduma za kitaalamu za ufungaji wa mifumo ya solar, matengenezo, na usambazaji wa vifaa bora vya nishati ya jua kwa nyumba na biashara.",
+    "services": [
+      "Installation",
+      "Maintenance",
+      "Consultation"
+    ],
+    "products": [
+      "Solar panels",
+      "Inverters",
+      "Batteries",
+      "Charge controllers"
+    ],
+    "keywords_en": [
+      "solar installer Tanzania",
+      "solar installation Dar es Salaam",
+      "solar panels supplier",
+      "solar maintenance",
+      "renewable energy Tanzania"
+    ],
+    "keywords_sw": [
+      "fundi solar Tanzania",
+      "ufungaji wa solar Dar es Salaam",
+      "muuzaji wa paneli za solar",
+      "matengenezo ya solar",
+      "nishati mbadala Tanzania"
+    ],
+    "cta_whatsapp_en": "Chat with us on WhatsApp for a free solar consultation.",
+    "cta_whatsapp_sw": "Wasiliana nasi kupitia WhatsApp kwa ushauri wa bure wa solar.",
+    "cta_call_en": "Call us today to get your solar system installed.",
+    "cta_call_sw": "Piga simu leo upate mfumo wako wa solar.",
+    "slug": "sunpower-solar-tanzania"
+  }
+]
