@@ -73,12 +73,17 @@ function setLang(lang) {
   renderDirectory(window.companies);
 }
 
-fetch("data/companies.json")
+  fetch("data/companies.json")
   .then(res => res.json())
   .then(data => {
-    window.companies = data;
-    renderDirectory(data);
-  });
+    if (Array.isArray(data)) {
+      window.companies = data;
+    } else {
+      window.companies = [data];
+    }
+    renderDirectory(window.companies);
+  })
+  .catch(err => console.error("Fetch error:", err));
 
 function renderDirectory(companies) {
   const container = document.getElementById("listings");
