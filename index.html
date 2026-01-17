@@ -73,7 +73,7 @@ function setLang(lang) {
   renderDirectory(window.companies);
 }
 
-fetch("../data/companies.json")
+fetch("data/companies.json")
   .then(res => res.json())
   .then(data => {
     window.companies = data;
