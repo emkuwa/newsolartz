@@ -1,176 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Solar Company Profile</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body {
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  background: #f1f4f9;
-}
-
-.header {
-  background: linear-gradient(135deg,#0d47a1,#1976d2);
-  color: white;
-  padding: 30px 20px;
-  text-align: center;
-  position: relative;
-}
-
-.back-btn {
-  position: absolute;
-  left: 15px;
-  top: 15px;
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.company-card {
-  background: white;
-  margin: -40px 15px 15px;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.company-card h1 {
-  margin-top: 0;
-  color: #0d47a1;
-}
-
-.badge {
-  display: inline-block;
-  background: #e3f2fd;
-  color: #0d47a1;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-right: 6px;
-}
-
-.section {
-  background: white;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-}
-
-.section h2 {
-  margin-top: 0;
-  color: #0d47a1;
-}
-
-.tags span {
-  display: inline-block;
-  background: #f1f1f1;
-  color: #333;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin: 4px;
-}
-
-.cta {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  z-index: 20;
-}
-
-.cta a {
-  flex: 1;
-  padding: 14px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.whatsapp { background: #25D366; }
-.call { background: #1565c0; }
-
-</style>
-</head>
-
-<body>
-
-<div class="header">
-  <a href="index.html" class="back-btn">← Back</a>
-  <h1 id="companyName">Loading...</h1>
-  <p id="headline"></p>
-</div>
-
-<div class="company-card">
-  <span class="badge" id="region"></span>
-  <span class="badge" id="category"></span>
-</div>
-
-<div class="section">
-  <h2>About Company</h2>
-  <p id="description"></p>
-</div>
-
-<div class="section">
-  <h2>Services</h2>
-  <div class="tags" id="services"></div>
-</div>
-
-<div class="section">
-  <h2>Products</h2>
-  <div class="tags" id="products"></div>
-</div>
-
-<div class="cta">
-  <a href="#" id="whatsappBtn" class="whatsapp">Chat on WhatsApp</a>
-  <a href="#" id="callBtn" class="call">Call Now</a>
-</div>
-
 <script>
 function getSlug() {
   const params = new URLSearchParams(window.location.search);
   return params.get("slug");
 }
 
-fetch("data/companies.json")
-  .then(res => res.json())
-  .then(companies => {
-    const slug = getSlug();
-    const company = companies.find(c => c.slug === slug);
+document.addEventListener("DOMContentLoaded", () => {
+  const slug = getSlug();
 
-    if (!company) {
-      document.body.innerHTML = "<h2 style='text-align:center'>Company not found</h2>";
-      return;
-    }
+  fetch("data/companies.json")
+    .then(res => res.json())
+    .then(companies => {
+      const company = companies.find(c => c.slug === slug);
 
-    document.getElementById("companyName").textContent = company.business_name;
-    document.getElementById("headline").textContent = company.headline_en;
-    document.getElementById("region").textContent = company.region;
-    document.getElementById("category").textContent = company.category;
-    document.getElementById("description").textContent = company.description_en;
+      if (!company) {
+        document.body.innerHTML = "<h2>Company not found</h2>";
+        return;
+      }
 
-    const servicesDiv = document.getElementById("services");
-    company.services.forEach(s => {
-      servicesDiv.innerHTML += `<span>${s}</span>`;
+      // Header
+      document.getElementById("companyName").textContent = company.business_name;
+      document.getElementById("companyHeadline").textContent = company.headline_en;
+
+      // About
+      document.getElementById("description").textContent = company.description_en;
+
+      // Services
+      const servicesBox = document.getElementById("services");
+      servicesBox.innerHTML = "";
+      company.services.forEach(s => {
+        servicesBox.innerHTML += `<span class="tag">${s}</span>`;
+      });
+
+      // Products
+      const productsBox = document.getElementById("products");
+      productsBox.innerHTML = "";
+      company.products.forEach(p => {
+        productsBox.innerHTML += `<span class="tag">${p}</span>`;
+      });
+
+      // CTA Buttons
+      const whatsappBtn = document.getElementById("whatsappBtn");
+      const callBtn = document.getElementById("callBtn");
+
+      // Kwa sasa tunatumia generic, baadaye utaongeza phone numbers kwenye JSON
+      whatsappBtn.href = "https://wa.me/?text=Hello%20I%20found%20you%20from%20Solar%20Tanzania%20Directory";
+      callBtn.href = "tel:+255700000000"; // unaweza kubadilisha baadaye
+
+    })
+    .catch(err => {
+      console.error(err);
+      document.body.innerHTML = "<h2>Error loading company data</h2>";
     });
-
-    const productsDiv = document.getElementById("products");
-    company.products.forEach(p => {
-      productsDiv.innerHTML += `<span>${p}</span>`;
-    });
-
-    // WhatsApp & Call (placeholder numbers for now)
-    document.getElementById("whatsappBtn").href = "https://wa.me/";
-    document.getElementById("callBtn").href = "tel:";
-  });
+});
 </script>
-
-</body>
-</html>
