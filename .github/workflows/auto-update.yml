@@ -30,14 +30,10 @@ jobs:
         run: |
           node scripts/updateCompanies.js
 
-          - name: Commit & push updated data
-  - name: Commit & push updated data
-  run: |
-    git config --global user.name "github-actions"
-    git config --global user.email "github-actions@github.com"
-    git add data/companies.json
-    git diff --cached --quiet || git commit -m "🤖 Auto update solar companies data"
-    git push
-
-
-
+      - name: 💾 Commit & push updated data
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data/companies.json
+          git diff --cached --quiet || git commit -m "🤖 Auto update solar companies data"
+          git push
