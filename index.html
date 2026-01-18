@@ -15,7 +15,7 @@
     header {
       background: #0d47a1;
       color: white;
-      padding: 15px;
+      padding: 20px;
       text-align: center;
     }
 
@@ -29,6 +29,12 @@
       border-radius: 6px;
       margin-bottom: 12px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.01);
     }
 
     .btn {
@@ -41,6 +47,20 @@
       border-radius: 4px;
       font-size: 14px;
     }
+
+    .search-box {
+      padding: 15px;
+      background: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
@@ -50,22 +70,14 @@
   <p>Find trusted solar companies in Tanzania</p>
 </header>
 
-  <div style="padding:15px;">
+<div class="search-box">
   <input 
     type="text" 
     id="searchInput" 
     placeholder="Search solar company..."
-    style="
-      width:100%;
-      padding:10px;
-      font-size:16px;
-      border-radius:5px;
-      border:1px solid #ccc;
-      margin-bottom:15px;
-    "
   />
 </div>
-  
+
 <div class="container" id="listings">
   Loading companies...
 </div>
@@ -73,6 +85,8 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("listings");
+  const searchInput = document.getElementById("searchInput");
+  let allCompanies = [];
 
   fetch("data/companies.json")
     .then(res => {
@@ -81,40 +95,53 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(data => {
       console.log("Loaded data:", data);
-
-      const companies = Array.isArray(data) ? data : [data];
-      container.innerHTML = "";
-
-      companies.forEach(c => {
-        const card = document.createElement("div");
-card.className = "card";
-card.style.cursor = "pointer";
-card.onclick = () => {
-  window.location.href = "company.html?slug=" + c.slug;
-};
-
-        card.innerHTML = `
-          <h3>${c.business_name}</h3>
-          <small>${c.category} • ${c.region}</small>
-          <h4>${c.headline_en}</h4>
-          <p>${c.description_en}</p>
-          <a class="btn" href="https://wa.me/" target="_blank">
-            ${c.cta_whatsapp_en}
-          </a>
-        `;
-
-        container.appendChild(card);
-      });
-
-      if (companies.length === 0) {
-        container.innerHTML = "<p>No companies found.</p>";
-      }
+      allCompanies = Array.isArray(data) ? data : [data];
+      renderCompanies(allCompanies);
     })
     .catch(err => {
       console.error("ERROR:", err);
-      container.innerHTML =
-        "<p style='color:red'>Failed to load companies.json</p>";
+      container.innerHTML = "<p style='color:red'>Failed to load companies.json</p>";
     });
+
+  function renderCompanies(companies) {
+    container.innerHTML = "";
+
+    companies.forEach(c => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.onclick = () => {
+        window.location.href = "company.html?slug=" + c.slug;
+      };
+
+      card.innerHTML = `
+        <h3>${c.business_name}</h3>
+        <small>${c.category} • ${c.region}</small>
+        <h4>${c.headline_en}</h4>
+        <p>${c.description_en}</p>
+        <a class="btn" href="https://wa.me/" target="_blank">
+          ${c.cta_whatsapp_en}
+        </a>
+      `;
+
+      container.appendChild(card);
+    });
+
+    if (companies.length === 0) {
+      container.innerHTML = "<p>No companies found.</p>";
+    }
+  }
+
+  searchInput.addEventListener("input", function () {
+    const keyword = this.value.toLowerCase();
+
+    const filtered = allCompanies.filter(c =>
+      c.business_name.toLowerCase().includes(keyword) ||
+      c.category.toLowerCase().includes(keyword) ||
+      c.region.toLowerCase().includes(keyword)
+    );
+
+    renderCompanies(filtered);
+  });
 });
 </script>
 
