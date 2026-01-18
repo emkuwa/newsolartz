@@ -89,36 +89,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let companies = [];
 
   fetch("data/companies.json")
-    .then(res => {
-      if (!res.ok) throw new Error("Failed to fetch companies.json");
-      return res.json();
-    })
+    .then(res => res.json())
     .then(data => {
       companies = Array.isArray(data) ? data : [data];
+      console.log("Companies loaded:", companies.length);
       renderCompanies(companies);
-    })
-    .catch(err => {
-      console.error("ERROR:", err);
-      container.innerHTML =
-        "<p style='color:red'>Failed to load companies.json</p>";
     });
 
   function renderCompanies(list) {
     container.innerHTML = "";
 
-    if (list.length === 0) {
-      container.innerHTML = "<p>No companies found.</p>";
-      return;
-    }
-
     list.forEach(c => {
       const card = document.createElement("div");
       card.className = "card";
-      card.style.cursor = "pointer";
-      card.onclick = () => {
-        window.location.href = "company.html?slug=" + c.slug;
-      };
-
       card.innerHTML = `
         <h3>${c.business_name}</h3>
         <small>${c.category} • ${c.region}</small>
@@ -128,22 +111,23 @@ document.addEventListener("DOMContentLoaded", function () {
           ${c.cta_whatsapp_en}
         </a>
       `;
-
       container.appendChild(card);
     });
   }
 
-  // 🔍 Search logic
-  searchInput.addEventListener("input", function () {
+  // Search Debug Version
+  searchInput.addEventListener("keyup", function () {
     const query = this.value.toLowerCase();
+    console.log("Searching:", query);
 
     const filtered = companies.filter(c =>
-      c.business_name.toLowerCase().includes(query) ||
-      c.category.toLowerCase().includes(query) ||
-      c.region.toLowerCase().includes(query) ||
-      c.description_en.toLowerCase().includes(query)
+      (c.business_name || "").toLowerCase().includes(query) ||
+      (c.category || "").toLowerCase().includes(query) ||
+      (c.region || "").toLowerCase().includes(query) ||
+      (c.description_en || "").toLowerCase().includes(query)
     );
 
+    console.log("Found:", filtered.length);
     renderCompanies(filtered);
   });
 });
