@@ -155,23 +155,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const card = document.createElement("div");
     card.className = "card";
 
-    card.innerHTML = `
-      <div>
-        <h3>${c.business_name}</h3>
-        <span class="badge">${c.region}</span>
-        <h4>${c.headline_en}</h4>
-        <p>${c.description_en.substring(0,120)}...</p>
-      </div>
+   card.innerHTML = `
+  <h2 style="margin:0;color:#0d47a1;">${c.business_name}</h2>
+  <small style="color:#555;">
+    ${c.category} • ${c.region}
+  </small>
 
-      <div class="actions">
-        <a class="btn" href="https://wa.me/" target="_blank">
-          WhatsApp
-        </a>
-        <a class="btn secondary" href="company.html?slug=${c.slug}">
-          View Profile
-        </a>
-      </div>
-    `;
+  <p style="font-style:italic;color:#333;margin:8px 0;">
+    ${c.headline_en}
+  </p>
+
+  <p style="color:#555;font-size:14px;">
+    ${c.description_en.substring(0,180)}...
+  </p>
+
+  <div style="margin-top:10px;">
+    <a class="btn" href="company.html?slug=${c.slug}">
+      View Company
+    </a>
+  </div>
+`;
 
     container.appendChild(card);
   });
