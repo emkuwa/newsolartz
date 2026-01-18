@@ -71,7 +71,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       companies.forEach(c => {
         const card = document.createElement("div");
-        card.className = "card";
+card.className = "card";
+card.style.cursor = "pointer";
+card.onclick = () => {
+  window.location.href = "company.html?slug=" + c.slug;
+};
 
         card.innerHTML = `
           <h3>${c.business_name}</h3>
