@@ -1,0 +1,39 @@
+name: Auto Update Solar Companies
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"   # Kila Jumatatu saa 03:00 asubuhi
+  workflow_dispatch:
+
+jobs:
+  update-companies:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: |
+          npm init -y
+          npm install node-fetch
+
+      - name: ⚙️ Run automation script
+        env:
+          SCRAPINGBEE_API_KEY: ${{ secrets.SCRAPINGBEE_API_KEY }}
+          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
+        run: |
+          node scripts/updateCompanies.js
+
+      - name: 📤 Commit & push updated data
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add data/companies.json
+          git commit -m "🤖 Auto update solar companies data"
+          git push
