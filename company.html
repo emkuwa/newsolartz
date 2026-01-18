@@ -12,29 +12,52 @@ body {
   background: #f1f4f9;
 }
 
-.hero {
+.header {
   background: linear-gradient(135deg,#0d47a1,#1976d2);
   color: white;
-  padding: 40px 20px;
+  padding: 30px 20px;
   text-align: center;
+  position: relative;
 }
 
-.hero h1 {
-  margin: 0;
-  font-size: 26px;
-}
-
-.hero p {
+.back-btn {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  color: white;
+  text-decoration: none;
   font-size: 14px;
-  opacity: .9;
+}
+
+.company-card {
+  background: white;
+  margin: -40px 15px 15px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.company-card h1 {
+  margin-top: 0;
+  color: #0d47a1;
+}
+
+.badge {
+  display: inline-block;
+  background: #e3f2fd;
+  color: #0d47a1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-right: 6px;
 }
 
 .section {
   background: white;
   margin: 15px;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,.05);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
 }
 
 .section h2 {
@@ -44,9 +67,9 @@ body {
 
 .tags span {
   display: inline-block;
-  background: #e3f2fd;
-  color: #0d47a1;
-  padding: 5px 10px;
+  background: #f1f1f1;
+  color: #333;
+  padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
   margin: 4px;
@@ -58,6 +81,7 @@ body {
   left: 0;
   right: 0;
   display: flex;
+  z-index: 20;
 }
 
 .cta a {
@@ -67,17 +91,26 @@ body {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .whatsapp { background: #25D366; }
 .call { background: #1565c0; }
+
 </style>
 </head>
 
 <body>
 
-<div class="hero" id="hero">
-  Loading...
+<div class="header">
+  <a href="index.html" class="back-btn">← Back</a>
+  <h1 id="companyName">Loading...</h1>
+  <p id="headline"></p>
+</div>
+
+<div class="company-card">
+  <span class="badge" id="region"></span>
+  <span class="badge" id="category"></span>
 </div>
 
 <div class="section">
@@ -96,8 +129,8 @@ body {
 </div>
 
 <div class="cta">
-  <a href="#" id="whatsappBtn" class="whatsapp">WhatsApp</a>
-  <a href="#" id="callBtn" class="call">Call</a>
+  <a href="#" id="whatsappBtn" class="whatsapp">Chat on WhatsApp</a>
+  <a href="#" id="callBtn" class="call">Call Now</a>
 </div>
 
 <script>
@@ -113,28 +146,27 @@ fetch("data/companies.json")
     const company = companies.find(c => c.slug === slug);
 
     if (!company) {
-      document.body.innerHTML = "<h2>Company not found</h2>";
+      document.body.innerHTML = "<h2 style='text-align:center'>Company not found</h2>";
       return;
     }
 
-    document.getElementById("hero").innerHTML = `
-      <h1>${company.business_name}</h1>
-      <p>${company.headline_en}</p>
-      <small>${company.category} • ${company.region}</small>
-    `;
-
+    document.getElementById("companyName").textContent = company.business_name;
+    document.getElementById("headline").textContent = company.headline_en;
+    document.getElementById("region").textContent = company.region;
+    document.getElementById("category").textContent = company.category;
     document.getElementById("description").textContent = company.description_en;
 
-    const services = document.getElementById("services");
+    const servicesDiv = document.getElementById("services");
     company.services.forEach(s => {
-      services.innerHTML += `<span>${s}</span>`;
+      servicesDiv.innerHTML += `<span>${s}</span>`;
     });
 
-    const products = document.getElementById("products");
+    const productsDiv = document.getElementById("products");
     company.products.forEach(p => {
-      products.innerHTML += `<span>${p}</span>`;
+      productsDiv.innerHTML += `<span>${p}</span>`;
     });
 
+    // WhatsApp & Call (placeholder numbers for now)
     document.getElementById("whatsappBtn").href = "https://wa.me/";
     document.getElementById("callBtn").href = "tel:";
   });
