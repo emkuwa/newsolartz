@@ -1,3 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar Company Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+    }
+
+    header {
+      background: #0d47a1;
+      color: white;
+      padding: 25px 15px;
+      text-align: center;
+      position: relative;
+    }
+
+    header a {
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .container {
+      padding: 15px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #0d47a1;
+    }
+
+    /* TAG STYLE */
+    .tag {
+      display: inline-block;
+      background: #e3f2fd;
+      color: #0d47a1;
+      padding: 6px 14px;
+      margin: 5px 6px 5px 0;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* CTA BUTTONS */
+    .cta-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 14px;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .whatsapp {
+      background: #25D366;
+    }
+
+    .call {
+      background: #1565c0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">← Back</a>
+  <h1 id="companyName">Loading...</h1>
+  <p id="companyHeadline"></p>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <h2>About Company</h2>
+    <p id="description"></p>
+  </div>
+
+  <div class="section">
+    <h2>Services</h2>
+    <div id="services"></div>
+  </div>
+
+  <div class="section">
+    <h2>Products</h2>
+    <div id="products"></div>
+  </div>
+
+  <div class="cta-buttons">
+    <a id="whatsappBtn" class="btn whatsapp" target="_blank">Chat on WhatsApp</a>
+    <a id="callBtn" class="btn call">Call Now</a>
+  </div>
+
+</div>
+
 <script>
 function getSlug() {
   const params = new URLSearchParams(window.location.search);
@@ -13,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const company = companies.find(c => c.slug === slug);
 
       if (!company) {
-        document.body.innerHTML = "<h2>Company not found</h2>";
+        document.body.innerHTML = "<h2 style='text-align:center'>Company not found</h2>";
         return;
       }
 
@@ -38,18 +159,21 @@ document.addEventListener("DOMContentLoaded", () => {
         productsBox.innerHTML += `<span class="tag">${p}</span>`;
       });
 
-      // CTA Buttons
+      // CTA Buttons (kwa sasa generic)
       const whatsappBtn = document.getElementById("whatsappBtn");
       const callBtn = document.getElementById("callBtn");
 
-      // Kwa sasa tunatumia generic, baadaye utaongeza phone numbers kwenye JSON
-      whatsappBtn.href = "https://wa.me/?text=Hello%20I%20found%20you%20from%20Solar%20Tanzania%20Directory";
-      callBtn.href = "tel:+255700000000"; // unaweza kubadilisha baadaye
+      whatsappBtn.href = 
+        "https://wa.me/?text=Hello%20I%20found%20you%20from%20Solar%20Tanzania%20Directory";
+      callBtn.href = "tel:+255700000000";
 
     })
     .catch(err => {
       console.error(err);
-      document.body.innerHTML = "<h2>Error loading company data</h2>";
+      document.body.innerHTML = "<h2 style='text-align:center'>Error loading company data</h2>";
     });
 });
 </script>
+
+</body>
+</html>
