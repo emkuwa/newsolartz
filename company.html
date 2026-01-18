@@ -128,16 +128,18 @@ function getSlug() {
 document.addEventListener("DOMContentLoaded", () => {
   const slug = getSlug();
 
-fetch("data/companies.json?v=" + Date.now())
-  .then(res => res.json())
-  .then(companies => {
-    if (!Array.isArray(companies)) {
-      companies = [companies];
-    }
+  fetch("data/companies.json?v=" + Date.now())
+    .then(res => res.json())
+    .then(companies => {
 
-    console.log("Companies loaded:", companies);
+      if (!Array.isArray(companies)) {
+        companies = [companies];
+      }
 
-    const company = companies.find(c => c.slug === slug);
+      console.log("Companies loaded:", companies);
+      console.log("Slug:", slug);
+
+      const company = companies.find(c => c.slug === slug);
 
       if (!company) {
         document.body.innerHTML = "<h2 style='text-align:center'>Company not found</h2>";
@@ -165,21 +167,22 @@ fetch("data/companies.json?v=" + Date.now())
         productsBox.innerHTML += `<span class="tag">${p}</span>`;
       });
 
-      // CTA Buttons (kwa sasa generic)
+      // CTA Buttons
       const whatsappBtn = document.getElementById("whatsappBtn");
       const callBtn = document.getElementById("callBtn");
 
-      whatsappBtn.href = 
+      whatsappBtn.href =
         "https://wa.me/?text=Hello%20I%20found%20you%20from%20Solar%20Tanzania%20Directory";
       callBtn.href = "tel:+255700000000";
-
     })
     .catch(err => {
       console.error(err);
-      document.body.innerHTML = "<h2 style='text-align:center'>Error loading company data</h2>";
+      document.body.innerHTML =
+        "<h2 style='text-align:center'>Error loading company data</h2>";
     });
 });
 </script>
+
 
 </body>
 </html>
