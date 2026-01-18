@@ -128,10 +128,16 @@ function getSlug() {
 document.addEventListener("DOMContentLoaded", () => {
   const slug = getSlug();
 
-  fetch("data/companies.json")
-    .then(res => res.json())
-    .then(companies => {
-      const company = companies.find(c => c.slug === slug);
+fetch("data/companies.json?v=" + Date.now())
+  .then(res => res.json())
+  .then(companies => {
+    if (!Array.isArray(companies)) {
+      companies = [companies];
+    }
+
+    console.log("Companies loaded:", companies);
+
+    const company = companies.find(c => c.slug === slug);
 
       if (!company) {
         document.body.innerHTML = "<h2 style='text-align:center'>Company not found</h2>";
