@@ -86,7 +86,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("listings");
   const searchInput = document.getElementById("searchInput");
-  let allCompanies = [];
+  let companies = [];
 
   fetch("data/companies.json")
     .then(res => {
@@ -94,21 +94,27 @@ document.addEventListener("DOMContentLoaded", function () {
       return res.json();
     })
     .then(data => {
-      console.log("Loaded data:", data);
-      allCompanies = Array.isArray(data) ? data : [data];
-      renderCompanies(allCompanies);
+      companies = Array.isArray(data) ? data : [data];
+      renderCompanies(companies);
     })
     .catch(err => {
       console.error("ERROR:", err);
-      container.innerHTML = "<p style='color:red'>Failed to load companies.json</p>";
+      container.innerHTML =
+        "<p style='color:red'>Failed to load companies.json</p>";
     });
 
-  function renderCompanies(companies) {
+  function renderCompanies(list) {
     container.innerHTML = "";
 
-    companies.forEach(c => {
+    if (list.length === 0) {
+      container.innerHTML = "<p>No companies found.</p>";
+      return;
+    }
+
+    list.forEach(c => {
       const card = document.createElement("div");
       card.className = "card";
+      card.style.cursor = "pointer";
       card.onclick = () => {
         window.location.href = "company.html?slug=" + c.slug;
       };
@@ -125,19 +131,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       container.appendChild(card);
     });
-
-    if (companies.length === 0) {
-      container.innerHTML = "<p>No companies found.</p>";
-    }
   }
 
+  // 🔍 Search logic
   searchInput.addEventListener("input", function () {
-    const keyword = this.value.toLowerCase();
+    const query = this.value.toLowerCase();
 
-    const filtered = allCompanies.filter(c =>
-      c.business_name.toLowerCase().includes(keyword) ||
-      c.category.toLowerCase().includes(keyword) ||
-      c.region.toLowerCase().includes(keyword)
+    const filtered = companies.filter(c =>
+      c.business_name.toLowerCase().includes(query) ||
+      c.category.toLowerCase().includes(query) ||
+      c.region.toLowerCase().includes(query) ||
+      c.description_en.toLowerCase().includes(query)
     );
 
     renderCompanies(filtered);
