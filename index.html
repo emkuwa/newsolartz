@@ -1,42 +1,52 @@
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.getElementById("listings");
+
+  if (!container) {
+    alert("Element #listings haipo kwenye HTML");
+    return;
+  }
+
   fetch("data/companies.json")
     .then(res => {
-      if (!res.ok) throw new Error("Failed to load companies.json");
+      console.log("Fetch status:", res.status);
+      if (!res.ok) {
+        throw new Error("Failed to fetch companies.json");
+      }
       return res.json();
     })
     .then(data => {
-      console.log("Loaded data:", data);
+      console.log("Data loaded:", data);
 
-      // hakikisha ni array
       const companies = Array.isArray(data) ? data : [data];
-      renderDirectory(companies);
+      container.innerHTML = "";
+
+      companies.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <h3>${c.business_name}</h3>
+          <small>${c.category} • ${c.region}</small>
+          <h4>${c.headline_en}</h4>
+          <p>${c.description_en}</p>
+          <a class="btn" href="https://wa.me/" target="_blank">${c.cta_whatsapp_en}</a>
+        `;
+
+        container.appendChild(card);
+      });
+
+      if (companies.length === 0) {
+        container.innerHTML = "<p>Hakuna kampuni bado.</p>";
+      }
     })
     .catch(err => {
-      console.error(err);
-      document.getElementById("listings").innerHTML =
-        "<p style='color:red'>Failed to load companies data.</p>";
+      console.error("ERROR:", err);
+      container.innerHTML = `
+        <p style="color:red;">
+          Kuna tatizo la kusoma data ya kampuni. Fungua Console uone error.
+        </p>
+      `;
     });
 });
-
-function renderDirectory(companies) {
-  const container = document.getElementById("listings");
-  container.innerHTML = "";
-
-  companies.forEach(c => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style.cursor = "pointer";
-
-    card.innerHTML = `
-      <h3>${c.business_name}</h3>
-      <small>${c.category} • ${c.region}</small>
-      <h4>${c.headline_en}</h4>
-      <p>${c.description_en}</p>
-      <a class="btn" href="https://wa.me/" target="_blank">${c.cta_whatsapp_en}</a>
-    `;
-
-    container.appendChild(card);
-  });
-}
 </script>
