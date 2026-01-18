@@ -45,14 +45,12 @@ const SEARCH_QUERIES = [
   "solar installer Songea"
 ];
 
-async function fetchFromScrapingBee() {
-  const url = `https://app.scrapingbee.com/api/v1/?api_key=${SCRAPINGBEE_KEY}&url=https://www.google.com/search?q=${encodeURIComponent(
-    SEARCH_QUERY
-  )}&render_js=false`;
+async function fetchFromScrapingBee(query) {
+  const url = `https://app.scrapingbee.com/api/v1/?api_key=${SCRAPINGBEE_KEY}&search=${encodeURIComponent(query)}&nb_results=10`;
 
   const response = await fetch(url);
-  const html = await response.text();
-  return html;
+  const data = await response.json();
+  return data;
 }
 
 // Dummy transformer (baadaye tutaunganisha na Google AI Studio API)
