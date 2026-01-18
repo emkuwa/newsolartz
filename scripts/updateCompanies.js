@@ -4,7 +4,46 @@ const SCRAPINGBEE_KEY = process.env.SCRAPINGBEE_API_KEY;
 const GOOGLE_AI_KEY = process.env.GOOGLE_AI_API_KEY;
 
 // Example query (utabadilisha kulingana na unavyotaka)
-const SEARCH_QUERY = "solar companies in Tanzania";
+const SEARCH_QUERIES = [
+  "solar company Tanzania",
+  "solar installer Tanzania",
+  "solar technician Tanzania",
+  "solar fundi Tanzania",
+  "solar panels shop Tanzania",
+  "solar inverter shop Tanzania",
+  "solar battery supplier Tanzania",
+  "renewable energy shop Tanzania",
+
+  "solar company Zanzibar",
+  "solar installer Zanzibar",
+  "solar fundi Zanzibar",
+  "solar shop Zanzibar",
+
+  "solar installer Dar es Salaam",
+  "solar fundi Dar es Salaam",
+  "solar panels shop Dar es Salaam",
+
+  "solar installer Arusha",
+  "solar fundi Arusha",
+  "solar shop Arusha",
+
+  "solar installer Mwanza",
+  "solar fundi Mwanza",
+  "solar shop Mwanza",
+
+  "solar installer Mbeya",
+  "solar fundi Mbeya",
+  "solar shop Mbeya",
+
+  "solar installer Dodoma",
+  "solar fundi Dodoma",
+
+  "solar installer Tanga",
+  "solar installer Morogoro",
+  "solar installer Iringa",
+  "solar installer Moshi",
+  "solar installer Songea"
+];
 
 async function fetchFromScrapingBee() {
   const url = `https://app.scrapingbee.com/api/v1/?api_key=${SCRAPINGBEE_KEY}&url=https://www.google.com/search?q=${encodeURIComponent(
