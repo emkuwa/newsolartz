@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 
 const SCRAPINGBEE_KEY = process.env.SCRAPINGBEE_API_KEY;
 const GOOGLE_AI_KEY = process.env.GOOGLE_AI_API_KEY;
