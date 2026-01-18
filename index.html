@@ -144,23 +144,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   function renderCompanies(list) {
-    container.innerHTML = "";
+  container.innerHTML = "";
 
-    list.forEach(c => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <h3>${c.business_name}</h3>
-        <small>${c.category} • ${c.region}</small>
-        <h4>${c.headline_en}</h4>
-        <p>${c.description_en}</p>
-        <a class="btn" href="https://wa.me/" target="_blank">
-          ${c.cta_whatsapp_en}
-        </a>
-      `;
-      container.appendChild(card);
-    });
+  if (list.length === 0) {
+    container.innerHTML = "<p>No companies found.</p>";
+    return;
   }
+
+  list.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <div>
+        <h3>${c.business_name}</h3>
+        <span class="badge">${c.region}</span>
+        <h4>${c.headline_en}</h4>
+        <p>${c.description_en.substring(0,120)}...</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="https://wa.me/" target="_blank">
+          WhatsApp
+        </a>
+        <a class="btn secondary" href="company.html?slug=${c.slug}">
+          View Profile
+        </a>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
 
   // Search Debug Version
   searchInput.addEventListener("keyup", function () {
