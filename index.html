@@ -196,38 +196,48 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   function renderCompanies(list) {
-    container.innerHTML = "";
-    if (!list.length) {
-      container.innerHTML = "<p>No companies found.</p>";
-      return;
-    }
-
-    list.forEach(c => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      card.innerHTML = `
-        <div class="card-body">
-          <h2>${c.business_name}</h2>
-          <small>${c.region || ""}</small>
-          <p>${(c.description_en || "").substring(0,140)}...</p>
-
-          <div class="actions">
-            <a class="btn whatsapp" 
-               href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory" 
-               target="_blank">
-              WhatsApp
-            </a>
-            <a class="btn call" 
-               href="company.html?slug=${c.slug}">
-              View
-            </a>
-          </div>
-        </div>
-      `;
-      container.appendChild(card);
-    });
+  container.innerHTML = "";
+  if (!list.length) {
+    container.innerHTML = "<p>No companies found.</p>";
+    return;
   }
+
+  list.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <div class="card-image"></div>
+
+      <div class="card-body">
+        <h2>${c.business_name}</h2>
+        <small>${c.region || "Tanzania"}</small>
+
+        <div class="badges">
+          <span class="badge">${c.category || "Solar Company"}</span>
+          <span class="badge">${c.region || "Tanzania"}</span>
+        </div>
+
+        <p>${(c.description_en || "").substring(0,120)}...</p>
+
+        <div class="actions">
+          <a class="btn whatsapp"
+             href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory"
+             target="_blank">
+            WhatsApp
+          </a>
+          <a class="btn call"
+             href="company.html?slug=${c.slug}">
+            View
+          </a>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
 
   searchInput.addEventListener("keyup", function () {
     const q = this.value.toLowerCase();
