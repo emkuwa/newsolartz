@@ -27,12 +27,12 @@ const SEARCH_QUERIES = [
 ];
 
 async function fetchFromScrapingBee(query) {
-  const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}&gl=tz&hl=en`;
-
   const url =
-    "https://app.scrapingbee.com/api/v1/request" +
+    "https://app.scrapingbee.com/api/v1/google" +
     `?api_key=${SCRAPINGBEE_KEY}` +
-    `&url=${encodeURIComponent(googleUrl)}`;
+    `&q=${encodeURIComponent(query)}` +
+    `&gl=tz` +
+    `&hl=en`;
 
   console.log("🌍 ScrapingBee URL:", url);
 
@@ -46,6 +46,7 @@ async function fetchFromScrapingBee(query) {
   const data = await response.json();
   return data;
 }
+
 
 
 function transformToCompany(item) {
