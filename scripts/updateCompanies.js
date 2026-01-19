@@ -1,10 +1,9 @@
 const fs = require("fs");
-const fetch = require("node-fetch");
 
 const SCRAPINGBEE_KEY = process.env.SCRAPINGBEE_API_KEY;
 
 if (!SCRAPINGBEE_KEY) {
-  console.error("❌ SCRAPINGBEE_API_KEY haijawekwa kwenye GitHub Secrets");
+  console.error("❌ SCRAPINGBEE_API_KEY haijawekwa");
   process.exit(1);
 }
 
@@ -27,7 +26,6 @@ const SEARCH_QUERIES = [
   "solar installer Dodoma"
 ];
 
-// Piga ScrapingBee Google API
 async function fetchFromScrapingBee(query) {
   const url = `https://app.scrapingbee.com/api/v1/google?api_key=${SCRAPINGBEE_KEY}&q=${encodeURIComponent(
     query
@@ -38,11 +36,9 @@ async function fetchFromScrapingBee(query) {
     throw new Error(`ScrapingBee error: ${response.status}`);
   }
 
-  const data = await response.json();
-  return data;
+  return await response.json();
 }
 
-// Badilisha Google result → Company Object
 function transformToCompany(item) {
   const name = item.title
     .replace(/–.*$/, "")
@@ -79,29 +75,26 @@ async function main() {
 
   for (const query of SEARCH_QUERIES) {
     console.log(`🔍 Searching: ${query}`);
-
     const data = await fetchFromScrapingBee(query);
 
     if (!data.organic_results) continue;
 
     for (const item of data.organic_results) {
       if (!item.domain) continue;
-
-      // Epuka duplicate
       if (seenDomains.has(item.domain)) continue;
-      seenDomains.add(item.domain);
 
+      seenDomains.add(item.domain);
       const company = transformToCompany(item);
       allCompanies.push(company);
     }
   }
 
   if (allCompanies.length === 0) {
-    console.log("⚠️ Hakuna kampuni iliyopatikana.");
+    console.log("⚠️ Hakuna kampuni zilizopatikana.");
     return;
   }
 
-  console.log(`💾 Saving ${allCompanies.length} companies to companies.json`);
+  console.log(`💾 Saving ${allCompanies.length} companies...`);
 
   fs.writeFileSync(
     "data/companies.json",
@@ -109,7 +102,7 @@ async function main() {
     "utf-8"
   );
 
-  console.log("✅ Update complete. Real companies saved!");
+  console.log("✅ Real solar companies saved successfully!");
 }
 
 main().catch(err => {
