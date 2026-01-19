@@ -213,6 +213,10 @@ footer {
   color: white;
   font-size: 13px;
 }
+  .btn.lead {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  font-weight: 600;
+}
 </style>
 </head>
 
@@ -298,18 +302,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <p>${(c.description_en || "").substring(0,120)}...</p>
 
-          <div class="actions">
-            <a class="btn whatsapp"
-               href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory"
-               target="_blank">
-              WhatsApp
-            </a>
-            <a class="btn call"
-               href="company.html?slug=${c.slug}">
-              View
-            </a>
-          </div>
-        </div>
+         <div class="actions">
+  <a class="btn lead"
+     href="lead.html?company=${encodeURIComponent(c.business_name)}">
+    Request Quote
+  </a>
+</div>
+
       `;
 
       container.appendChild(card);
