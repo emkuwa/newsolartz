@@ -71,33 +71,47 @@ function transformToCompany(item) {
 }
 
 async function main() {
-  console.log("🚀 Starting Solar Companies Auto Update…");
+  console.log("🚀 Starting Solar Companies Auto Update...");
 
   let allCompanies = [];
-  const seenDomains = new Set();
+  let counter = 1;
 
   for (const query of SEARCH_QUERIES) {
     console.log(`🔍 Searching: ${query}`);
+
     const data = await fetchFromScrapingBee(query);
 
-    if (!data.organic_results) continue;
+    if (!data.organic_results) {
+      console.log("⚠️ No organic results for:", query);
+      continue;
+    }
 
     for (const item of data.organic_results) {
-      if (!item.domain) continue;
-      if (seenDomains.has(item.domain)) continue;
+      const company = {
+        id: `auto_${counter++}`,
+        business_name: item.title || "Unknown Solar Company",
+        category: "Solar Company",
+        region: "Tanzania",
+        district: "",
+        headline_en: item.title || "",
+        headline_sw: "",
+        description_en: item.description || "",
+        description_sw: "",
+        services: [],
+        products: [],
+        website: item.url || "",
+        domain: item.domain || "",
+        slug: (item.title || "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "")
+      };
 
-      seenDomains.add(item.domain);
-      const company = transformToCompany(item);
       allCompanies.push(company);
     }
   }
 
-  if (allCompanies.length === 0) {
-    console.log("⚠️ Hakuna kampuni zilizopatikana.");
-    return;
-  }
-
-  console.log(`💾 Saving ${allCompanies.length} companies...`);
+  console.log(`💾 Saving ${allCompanies.length} companies to data/companies.json...`);
 
   fs.writeFileSync(
     "data/companies.json",
@@ -105,10 +119,11 @@ async function main() {
     "utf-8"
   );
 
-  console.log("✅ Real solar companies saved successfully!");
+  console.log("✅ Update complete!");
 }
 
 main().catch(err => {
   console.error("❌ Error:", err);
   process.exit(1);
 });
+
