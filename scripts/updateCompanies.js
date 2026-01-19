@@ -30,9 +30,10 @@ async function fetchFromScrapingBee(query) {
   const url =
     "https://app.scrapingbee.com/api/v1/google" +
     `?api_key=${SCRAPINGBEE_KEY}` +
-    `&q=${encodeURIComponent(query)}` +
-    `&gl=tz` +
-    `&hl=en`;
+    `&search=${encodeURIComponent(query)}` +
+    `&country=tz` +
+    `&language=en` +
+    `&page=1`;
 
   console.log("🌍 ScrapingBee URL:", url);
 
@@ -46,7 +47,6 @@ async function fetchFromScrapingBee(query) {
   const data = await response.json();
   return data;
 }
-
 
 
 function transformToCompany(item) {
