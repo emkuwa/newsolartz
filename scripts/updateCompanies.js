@@ -27,15 +27,20 @@ const SEARCH_QUERIES = [
 ];
 
 async function fetchFromScrapingBee(query) {
-  const url = `https://app.scrapingbee.com/api/v1/google?api_key=${SCRAPINGBEE_KEY}&query=${encodeURIComponent(
-    query
-  )}&gl=tz&hl=en`;
+  const url =
+    "https://app.scrapingbee.com/api/v1/google" +
+    `?api_key=${SCRAPINGBEE_KEY}` +
+    `&query=${encodeURIComponent(query)}` +
+    `&gl=tz` +
+    `&hl=en`;
+
+  console.log("🌍 ScrapingBee URL:", url);
 
   const response = await fetch(url);
 
   if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`ScrapingBee error ${response.status}: ${text}`);
+    const errorText = await response.text();
+    throw new Error(`ScrapingBee error ${response.status}: ${errorText}`);
   }
 
   const data = await response.json();
