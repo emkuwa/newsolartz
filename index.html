@@ -5,448 +5,194 @@
 <title>Solar Tanzania Directory</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
 <style>
 
 /* SECTION TITLES */
-.section-title {
-  text-align: center;
-  margin: 50px 0 20px;
-  font-size: 26px;
-  font-weight: 800;
-  color: #0d47a1;
+.section-title{
+  text-align:center;
+  margin:60px 0 25px;
+  font-size:28px;
+  font-weight:800;
+  color:#0d47a1;
 }
 
-/* BASE SETUP */
-.top-banner {
-  background: linear-gradient(90deg, #ff9800, #f57c00);
-  color: #fff;
-  text-align: center;
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: 600;
+/* TOP BANNER */
+.top-banner{
+  background:linear-gradient(90deg,#ff9800,#f57c00);
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  font-size:14px;
 }
-
-.top-banner a {
-  margin-left: 10px;
-  background: #ffffff;
-  color: #f57c00;
-  padding: 6px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.2s;
-}
-
-.top-banner a:hover {
-  background: #ffe0b2;
+.top-banner a{
+  background:#fff;
+  color:#f57c00;
+  padding:6px 12px;
+  border-radius:5px;
+  text-decoration:none;
+  font-weight:700;
+  margin-left:10px;
 }
 
 /* TOP NAV */
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #ffffff;
-  padding: 12px 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.top-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#fff;
+  padding:12px 30px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+.logo{height:45px}
+.nav-center a{
+  margin:0 12px;
+  font-weight:600;
+  color:#0d47a1;
+  text-decoration:none;
+}
+.nav-center a:hover{color:#ff9800}
+.add-btn{
+  background:#1cc88a;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:700;
 }
 
-.nav-left .logo {
-  height: 45px;
+/* BODY */
+body{
+  margin:0;
+  font-family:system-ui, sans-serif;
+  background:#eef2f8;
 }
 
-.nav-center a {
-  margin: 0 12px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #0d47a1;
-}
-
-.nav-center a:hover {
-  color: #ff9800;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.login {
-  font-size: 14px;
-  color: #555;
-  cursor: pointer;
-}
-
-.add-btn {
-  background: #1cc88a;
-  color: #fff;
-  padding: 8px 14px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.add-btn:hover {
-  background: #17a673;
-}
-  
-.top-banner a {
-  margin-left: 10px;
-  background: #ffffff;
-  color: #f57c00;
-  padding: 6px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.2s;
-}
-
-.top-banner a:hover {
-  background: #ffe0b2;
-}
-  
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  margin: 0;
-  background: #eef2f8;
-  color: #333;
-}
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-  gap: 8px;
-}
-
-.pagination button {
-  background: #0d47a1;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.pagination button.active {
-  background: #f57c00;
-}
-
-.pagination button:hover {
-  opacity: 0.9;
-}
-  
 /* HERO */
-.hero {
-  position: relative;
-  height: 75vh;
-  background: url("https://res.cloudinary.com/dn6aezjpa/image/upload/v1768801950/Screenshot_2026-01-19_at_8.51.30_AM_dx2ihq.jpg")
-              center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero{
+  height:70vh;
+  background:url("https://res.cloudinary.com/dn6aezjpa/image/upload/v1768801950/Screenshot_2026-01-19_at_8.51.30_AM_dx2ihq.jpg") center/cover no-repeat;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+}
+.hero-content{
+  position:relative;
+  color:white;
+  text-align:center;
+}
+.hero h1{font-size:48px}
+.hero p{font-size:18px}
+
+/* CONTAINER */
+.container{
+  padding:40px 5%;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+@media(max-width:1000px){
+  .container{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .container{grid-template-columns:1fr}
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);
+/* CARD */
+.card{
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  display:flex;
+  flex-direction:column;
+}
+.card-icon{
+  height:110px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  background:#e3f2fd;
+}
+.card-body{
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+.actions{
+  margin-top:auto;
+}
+.btn.lead{
+  background:linear-gradient(135deg,#ff9800,#f57c00);
+  color:white;
+  text-decoration:none;
+  padding:10px;
+  text-align:center;
+  border-radius:6px;
+  font-weight:700;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 1100px;
-  color: white;
-  text-align: center;        /* hii ndiyo muhimu */
-  margin: 0 auto;            /* iwe katikati */
+/* PAGINATION */
+.pagination{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:30px 0;
 }
-
-
-.hero h1 {
-  font-size: 52px;
-  font-weight: 800;
-  margin: 0 auto 12px;
-  text-align: center;
+.pagination button{
+  background:#0d47a1;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:5px;
+  cursor:pointer;
 }
-
-.hero p {
-  font-size: 20px;
-  margin: 0 auto 30px;
-  text-align: center;
-  max-width: 800px;
-}
-
-.hero-search-box {
-  background: rgba(0, 120, 160, 0.85);
-  padding: 20px;
-  border-radius: 8px;
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 12px;
-  align-items: end;
-  margin: 0 auto;           /* hii inaifanya ikae center */
-}
-
-
-.hero-search-box .field {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero-search-box label {
-  font-size: 13px;
-  margin-bottom: 4px;
-  color: #e0f4ff;
-}
-
-.hero-search-box input,
-.hero-search-box select {
-  padding: 12px;
-  border-radius: 5px;
-  border: none;
-  font-size: 15px;
-}
-
-.search-btn {
-  background: #1cc88a;
-  color: white;
-  border: none;
-  padding: 14px 22px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.search-btn:hover {
-  background: #17a673;
-}
-
-
-
-/* CARDS */
-.container {
-  padding: 40px 5%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-}
-
-/* Tablet */
-@media (max-width: 1100px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-}
-
-
-.card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  overflow: hidden;
-  transition: all 0.25s ease;
-  border-top: 4px solid #f57c00;   /* yellow theme */
-}
-
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.card-body {
-  padding: 18px 16px;
-}
-
-.card h2 {
-  font-size: 19px;
-  margin: 0 0 6px;
-  color: #0d47a1;
-}
-
-.card small {
-  font-size: 12px;
-  color: #555;
-}
-
-.card p {
-  font-size: 14px;
-  color: #444;
-  margin: 8px 0;
-  line-height: 1.4;
-}
-
-/* BADGE */
-.badge {
-  display: inline-block;
-  background: #e3f2fd;
-  color: #0d47a1;
-  padding: 3px 8px;
-  font-size: 12px;
-  border-radius: 15px;
-  margin: 8px 0;
-}
-
-.card-icon {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-  font-size: 48px;
-  color: #0d47a1;
-}
-
-  .card {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.actions {
-  margin-top: auto;     /* hii ndiyo siri */
-}
-
-
-.badges {
-  margin: 8px 0;
-}
-
-.badge {
-  display: inline-block;
-  background: #e3f2fd;
-  color: #0d47a1;
-  padding: 4px 10px;
-  font-size: 11px;
-  border-radius: 20px;
-  margin-right: 6px;
-}   
-  
-/* ACTION BUTTONS */
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  padding-bottom: 12px;
-}
-
-.btn {
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: .2s ease;
-}
-
-.btn.whatsapp {
-  background: #25D366;
-}
-
-.btn.call {
-  background: #1565c0;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
+.pagination button.active{background:#f57c00}
 
 /* FOOTER */
-footer {
-  text-align: center;
-  padding: 14px;
-  background: #0d47a1;
-  color: white;
-  font-size: 13px;
+footer{
+  background:#0d47a1;
+  color:white;
+  text-align:center;
+  padding:15px;
 }
-.btn.lead {
-  background: linear-gradient(135deg, #ff9800, #f57c00);
-  font-weight: 600;
-  text-align: center;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- TOP BANNER -->
 <div class="top-banner">
-  🚀 Promote your solar business here – Get quality leads from Solar Tanzania Directory
+  🚀 Promote your solar business here – Get quality leads
   <a href="join.html">Add Your Company</a>
 </div>
 
-<!-- TOP NAV -->
 <div class="top-nav">
-
-  <div class="nav-left">
-    <img src="logo.png" class="logo">
-  </div>
-
+  <div><img src="logo.png" class="logo"></div>
   <div class="nav-center">
     <a href="#">Home</a>
     <a href="#">Find a Solar Company</a>
     <a href="#">Blog</a>
     <a href="#">Join Today</a>
   </div>
-
-  <div class="nav-right">
-    <span class="login">Member Login</span>
+  <div>
     <a href="join.html" class="add-btn">Add Your Solar Company</a>
   </div>
-
 </div>
 
-<!-- HERO SECTION -->
 <header class="hero">
   <div class="hero-content">
     <h1>Find Trusted Solar Companies in Tanzania</h1>
-    <p>Search installers, suppliers & solar solution providers near you.</p>
-
-    <div class="hero-search-box">
-      <div class="field">
-        <label>Specializing in:</label>
-        <select>
-          <option value="">Select Category</option>
-          <option>Solar Installation</option>
-          <option>Solar Panels</option>
-          <option>Inverters</option>
-          <option>Batteries</option>
-          <option>Solar Engineering</option>
-          <option>Solar Shops</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label>Search by location:</label>
-        <input type="text" placeholder="City or Region (e.g Dar, Zanzibar)">
-      </div>
-
-      <button class="search-btn">Search Now</button>
-    </div>
+    <p>Search installers, suppliers & solar providers near you</p>
   </div>
 </header>
 
@@ -457,143 +203,93 @@ footer {
 <div class="container" id="newly-added"></div>
 
 <h2 class="section-title">📂 All Solar Companies</h2>
-
-<div class="container" id="listings">Loading companies...</div>
-  
+<div class="container" id="listings"></div>
 <div class="pagination" id="pagination"></div>
 
-<footer>
-  © 2026 Solar Tanzania Directory
-</footer>
-
-<script>
-function getIcon(company) {
-  const text = (
-    (company.business_name || "") +
-    (company.category || "") +
-    (company.description_en || "")
-  ).toLowerCase();
-
-  if (text.includes("installer") || text.includes("installation")) return "🔧";
-  if (text.includes("battery")) return "🔋";
-  if (text.includes("panel")) return "☀️";
-  if (text.includes("inverter")) return "⚡";
-  if (text.includes("shop") || text.includes("supplier")) return "🏪";
-  if (text.includes("engineering") || text.includes("epc")) return "🏗️";
-  return "🌞";
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("listings");
-  const pagination = document.getElementById("pagination");
-
-  const itemsPerPage = 12;
-  let currentPage = 1;
-  let companies = [];
-
-  fetch("./data/companies.json")
-    .then(res => res.json())
-    .then(data => {
-      companies = Array.isArray(data) ? data : [data];
-      renderPage(1);
-      renderPagination();
-    })
-    .catch(err => {
-      container.innerHTML = "<p>Failed to load companies data.</p>";
-      console.error(err);
-    });
-
-  function renderPage(page) {
-    currentPage = page;
-    container.innerHTML = "";
-
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const sliced = companies.slice(start, end);
-
-    sliced.forEach(c => {
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const icon = getIcon(c);
-
-      card.innerHTML = `
-        <div class="card-icon">${icon}</div>
-        <div class="card-body">
-          <h2>${c.business_name}</h2>
-          <small>${c.region || "Tanzania"}</small>
-
-          <div class="badges">
-            <span class="badge">${c.category || "Solar Company"}</span>
-            <span class="badge">${c.region || "Tanzania"}</span>
-          </div>
-
-          <p>${(c.description_en || "").substring(0,120)}...</p>
-
-          <div class="actions">
-<a class="btn lead"
-   href="company.html?company=${encodeURIComponent(c.business_name)}">
-   View
-</a>
-
-          </div>
-        </div>
-      `;
-
-      container.appendChild(card);
-    });
-
-  <div class="card">
-    <div class="card-body">
-      <h2>Best Solar Panels for Zanzibar Climate</h2>
-      <p>Learn which panels perform best in coastal and humid environments like Zanzibar.</p>
-      <a class="btn lead" href="#">Read Article</a>
-    </div>
-  </div>
-
-    }
 <h2 class="section-title">📰 Solar News & Tips Tanzania</h2>
-
 <div class="container">
   <div class="card">
     <div class="card-body">
       <h2>Why Solar Energy is Growing Fast in Tanzania</h2>
-      <p>Discover why more homes and businesses are switching to solar power and how it saves costs.</p>
+      <p>Why more Tanzanians are shifting to solar.</p>
       <a class="btn lead" href="#">Read Article</a>
     </div>
   </div>
-  
   <div class="card">
     <div class="card-body">
-      <h2>Solar Batteries: Lithium vs Gel Batteries</h2>
-      <p>Compare battery technologies and choose the best option for your solar system.</p>
+      <h2>Best Solar Panels for Zanzibar Climate</h2>
+      <p>Top panels for coastal environments.</p>
+      <a class="btn lead" href="#">Read Article</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h2>Solar Batteries: Lithium vs Gel</h2>
+      <p>Compare battery technologies.</p>
       <a class="btn lead" href="#">Read Article</a>
     </div>
   </div>
 </div>
 
-  function renderPagination() {
-    pagination.innerHTML = "";
-    const pageCount = Math.ceil(companies.length / itemsPerPage);
+<footer>© 2026 Solar Tanzania Directory</footer>
 
-    for (let i = 1; i <= pageCount; i++) {
-      const btn = document.createElement("button");
-      btn.textContent = i;
-      if (i === currentPage) btn.classList.add("active");
+<script>
+function getIcon(){
+  const icons=["☀️","🔋","⚡","🔧","🏪","🏗️"];
+  return icons[Math.floor(Math.random()*icons.length)];
+}
 
-      btn.addEventListener("click", () => {
-        renderPage(i);
-        renderPagination();
-        window.scrollTo({ top: 600, behavior: "smooth" });
-      });
+document.addEventListener("DOMContentLoaded",()=>{
+  const container=document.getElementById("listings");
+  const pagination=document.getElementById("pagination");
+  const itemsPerPage=12;
+  let currentPage=1;
+  let companies=[];
 
-      pagination.appendChild(btn);
+  fetch("./data/companies.json")
+  .then(r=>r.json())
+  .then(data=>{
+    companies=data;
+    renderPage(1);
+    renderPagination();
+  });
+
+  function renderPage(page){
+    currentPage=page;
+    container.innerHTML="";
+    const start=(page-1)*itemsPerPage;
+    const end=start+itemsPerPage;
+    companies.slice(start,end).forEach(c=>{
+      const card=document.createElement("div");
+      card.className="card";
+      card.innerHTML=`
+        <div class="card-icon">${getIcon()}</div>
+        <div class="card-body">
+          <h2>${c.business_name}</h2>
+          <p>${c.region||"Tanzania"}</p>
+          <p>${(c.description_en||"").substring(0,100)}...</p>
+          <div class="actions">
+            <a class="btn lead" href="company.html?company=${encodeURIComponent(c.business_name)}">View</a>
+          </div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function renderPagination(){
+    pagination.innerHTML="";
+    const pages=Math.ceil(companies.length/itemsPerPage);
+    for(let i=1;i<=pages;i++){
+      const b=document.createElement("button");
+      b.textContent=i;
+      if(i===currentPage)b.classList.add("active");
+      b.onclick=()=>{renderPage(i);renderPagination();}
+      pagination.appendChild(b);
     }
   }
 });
 </script>
-
-
 
 </body>
 </html>
