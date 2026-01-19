@@ -31,7 +31,7 @@ async function fetchFromScrapingBee(query) {
     "https://app.scrapingbee.com/api/v1/google" +
     `?api_key=${SCRAPINGBEE_KEY}` +
     `&search=${encodeURIComponent(query)}` +
-    `&country=tz` +
+    `&country_code=tz` +
     `&language=en` +
     `&page=1`;
 
@@ -47,6 +47,7 @@ async function fetchFromScrapingBee(query) {
   const data = await response.json();
   return data;
 }
+
 
 
 function transformToCompany(item) {
