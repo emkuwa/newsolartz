@@ -264,20 +264,7 @@ footer{
 
 <h2 class="section-title">Featured Solar Companies in Tanzania</h2>
 <div class="container" id="featured"></div>
-
-<h2 class="section-title">Newly Added Solar Companies</h2>
-<div class="container" id="newly-added"></div>
-
-<h2 class="section-title">All Solar Companies</h2>
-<div class="container" id="listings"></div>
-
-<div class="pagination" id="pagination"></div>
-  <button>&lt; Prev</button>
-  <button class="active">1</button>
-  <button>2</button>
-  <button>Next &gt;</button>
-</div>
-
+  
 <h2 class="section-title">Solar News & Tips Tanzania</h2>
 <div class="container blog-container">
   <div class="card">
@@ -337,9 +324,6 @@ document.addEventListener("DOMContentLoaded", function () {
       companies = Array.isArray(data) ? data : [data];
 
       renderFeatured();
-      renderNewlyAdded();
-      renderPage(1);
-      renderPagination();
     });
 
   function createCard(c) {
@@ -375,23 +359,10 @@ document.addEventListener("DOMContentLoaded", function () {
   /* FEATURED – chukua kampuni 6 za mwanzo */
   function renderFeatured() {
     featuredContainer.innerHTML = "";
-    companies.slice(0, 6).forEach(c => {
+    companies.slice(0, 4).forEach(c => {
       featuredContainer.appendChild(createCard(c));
     });
   }
-
-  /* NEWLY ADDED – chukua 6 za mwisho */
-  function renderNewlyAdded() {
-    newlyAddedContainer.innerHTML = "";
-    companies.slice(-6).forEach(c => {
-      newlyAddedContainer.appendChild(createCard(c));
-    });
-  }
-
-  /* ALL SOLAR COMPANIES (pagination) */
-  function renderPage(page) {
-    currentPage = page;
-    allContainer.innerHTML = "";
 
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
@@ -401,10 +372,6 @@ document.addEventListener("DOMContentLoaded", function () {
       allContainer.appendChild(createCard(c));
     });
   }
-
-  function renderPagination() {
-    pagination.innerHTML = "";
-    const pageCount = Math.ceil(companies.length / itemsPerPage);
 
     // Prev
     const prev = document.createElement("button");
