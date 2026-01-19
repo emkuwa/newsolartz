@@ -141,11 +141,6 @@ body{
   flex-direction:column;
   border-top:4px solid var(--yellow);
 }
-.card-icon svg{
-  width:40px;
-  height:40px;
-  fill:#0d47a1;
-}
 
 .card-body{
   padding:15px;
@@ -296,46 +291,13 @@ footer{
 </footer>
 
 <script>
-function getIcon(company) {
-  const text = (
-    (company.business_name || "") +
-    (company.category || "") +
-    (company.description_en || "")
-  ).toLowerCase();
-
-  if (text.includes("battery")) return `
-  <svg viewBox="0 0 24 24">
-    <rect x="6" y="4" width="12" height="16" rx="2" fill="#0d47a1"/>
-    <rect x="9" y="2" width="6" height="2" fill="#0d47a1"/>
-  </svg>`;
-
-  if (text.includes("panel")) return `
-  <svg viewBox="0 0 24 24">
-    <rect x="3" y="3" width="18" height="18" rx="2" fill="#0d47a1"/>
-    <line x1="3" y1="9" x2="21" y2="9" stroke="#fff" stroke-width="1"/>
-    <line x1="3" y1="15" x2="21" y2="15" stroke="#fff" stroke-width="1"/>
-    <line x1="9" y1="3" x2="9" y2="21" stroke="#fff" stroke-width="1"/>
-    <line x1="15" y1="3" x2="15" y2="21" stroke="#fff" stroke-width="1"/>
-  </svg>`;
-
-  if (text.includes("install") || text.includes("engineer")) return `
-  <svg viewBox="0 0 24 24">
-    <path d="M2 22l6-6 4 4-6 6z" fill="#0d47a1"/>
-    <path d="M14 2l8 8-3 3-8-8z" fill="#0d47a1"/>
-  </svg>`;
-
-  return `
-  <svg viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="5" fill="#ff9800"/>
-    <line x1="12" y1="1" x2="12" y2="4" stroke="#ff9800" stroke-width="2"/>
-    <line x1="12" y1="20" x2="12" y2="23" stroke="#ff9800" stroke-width="2"/>
-    <line x1="1" y1="12" x2="4" y2="12" stroke="#ff9800" stroke-width="2"/>
-    <line x1="20" y1="12" x2="23" y2="12" stroke="#ff9800" stroke-width="2"/>
-  </svg>`;
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   const featuredContainer = document.getElementById("featured");
+  const allContainer = document.getElementById("listings");
+  const pagination = document.getElementById("pagination");
+
+  const itemsPerPage = 12;
+  let currentPage = 1;
   let companies = [];
 
   fetch("./data/companies.json")
@@ -343,6 +305,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       companies = Array.isArray(data) ? data : [data];
       renderFeatured();
+      renderPage(1);
+      renderPagination();
     });
 
   function createCard(c) {
@@ -350,10 +314,6 @@ document.addEventListener("DOMContentLoaded", function () {
     card.className = "card";
 
     card.innerHTML = `
-      <div class="card-icon">
-        ${getIcon(c)}
-      </div>
-
       <div class="card-body">
         <h2>${c.business_name}</h2>
         <small>${c.region || "Tanzania"}</small>
@@ -370,15 +330,74 @@ document.addEventListener("DOMContentLoaded", function () {
     return card;
   }
 
+  // Featured (4 only)
   function renderFeatured() {
     featuredContainer.innerHTML = "";
     companies.slice(0,4).forEach(c => {
       featuredContainer.appendChild(createCard(c));
     });
   }
+
+  // All companies (with pagination)
+  function renderPage(page) {
+    currentPage = page;
+    allContainer.innerHTML = "";
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const sliced = companies.slice(start, end);
+
+    sliced.forEach(c => {
+      allContainer.appendChild(createCard(c));
+    });
+  }
+
+  function renderPagination() {
+    pagination.innerHTML = "";
+    const pageCount = Math.ceil(companies.length / itemsPerPage);
+
+    // Prev
+    const prev = document.createElement("button");
+    prev.textContent = "← Prev";
+    prev.disabled = currentPage === 1;
+    prev.onclick = () => {
+      if (currentPage > 1) {
+        renderPage(currentPage - 1);
+        renderPagination();
+        window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
+      }
+    };
+    pagination.appendChild(prev);
+
+    // Page numbers
+    for (let i = 1; i <= pageCount; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active");
+
+      btn.onclick = () => {
+        renderPage(i);
+        renderPagination();
+        window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
+      };
+      pagination.appendChild(btn);
+    }
+
+    // Next
+    const next = document.createElement("button");
+    next.textContent = "Next →";
+    next.disabled = currentPage === pageCount;
+    next.onclick = () => {
+      if (currentPage < pageCount) {
+        renderPage(currentPage + 1);
+        renderPagination();
+        window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
+      }
+    };
+    pagination.appendChild(next);
+  }
 });
 </script>
-
 
   
   
