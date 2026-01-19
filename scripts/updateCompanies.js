@@ -27,9 +27,9 @@ const SEARCH_QUERIES = [
 ];
 
 async function fetchFromScrapingBee(query) {
-  const url = `https://app.scrapingbee.com/api/v1/google?api_key=${SCRAPINGBEE_KEY}&q=${encodeURIComponent(
+  const url = `https://app.scrapingbee.com/api/v1/google?api_key=${SCRAPINGBEE_KEY}&query=${encodeURIComponent(
     query
-  )}&gl=tz&hl=en&nb_results=10`;
+  )}&gl=tz&hl=en`;
 
   const response = await fetch(url);
 
