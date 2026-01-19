@@ -78,7 +78,6 @@ body{
   align-items:center;
 }
 
-}
 .hero::after{
   content:"";
   position:absolute;
@@ -142,13 +141,12 @@ body{
   flex-direction:column;
   border-top:4px solid var(--yellow);
 }
-.card-icon{
-  height:100px;
-  background:linear-gradient(135deg,#e3f2fd,#bbdefb);
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.card-icon svg{
+  width:40px;
+  height:40px;
+  fill:#0d47a1;
 }
+
 .card-body{
   padding:15px;
   display:flex;
@@ -270,12 +268,12 @@ footer{
 <div class="container" id="featured"></div>
 
 <h2 class="section-title">Newly Added Solar Companies</h2>
-<div class="container" id="new"></div>
+<div class="container" id="newly-added"></div>
 
 <h2 class="section-title">All Solar Companies</h2>
 <div class="container" id="listings"></div>
 
-<div class="pagination">
+<div class="pagination" id="pagination"></div>
   <button>&lt; Prev</button>
   <button class="active">1</button>
   <button>2</button>
@@ -283,7 +281,7 @@ footer{
 </div>
 
 <h2 class="section-title">Solar News & Tips Tanzania</h2>
-<div class="blog-container">
+<div class="container blog-container">
   <div class="card">
     <div class="card-body">
       <h3>Why Solar Energy is Growing Fast in Tanzania</h3>
@@ -312,13 +310,17 @@ function getIcon(company) {
     (company.description_en || "")
   ).toLowerCase();
 
-  if (text.includes("installer") || text.includes("installation")) return "🔧";
-  if (text.includes("battery")) return "🔋";
-  if (text.includes("panel")) return "☀️";
-  if (text.includes("inverter")) return "⚡";
-  if (text.includes("shop") || text.includes("supplier")) return "🏪";
-  if (text.includes("engineering") || text.includes("epc")) return "🏗️";
-  return "🌞";
+  if (text.includes("battery")) return `
+    <svg viewBox="0 0 24 24"><path d="M16 4h-1V2h-6v2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg>`;
+  
+  if (text.includes("panel")) return `
+    <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/></svg>`;
+
+  if (text.includes("installer") || text.includes("engineering")) return `
+    <svg viewBox="0 0 24 24"><path d="M22 2l-7 7 3 3-7 7-3-3-7 7"/></svg>`;
+
+  return `
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg>`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
