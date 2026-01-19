@@ -264,8 +264,11 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
- list.forEach((c, index) => {
-  const image = stockImages[index % stockImages.length];
+  list.forEach((c, index) => {
+    const card = document.createElement("div");   // HII ILIOKOSA
+    card.className = "card";
+
+    const image = stockImages[index % stockImages.length];
 
     card.innerHTML = `
       <div class="card-image" style="background-image: url('${image}')"></div>
@@ -298,6 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
     container.appendChild(card);
   });
 }
+
 
 
   searchInput.addEventListener("keyup", function () {
