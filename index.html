@@ -252,76 +252,83 @@ function getIcon(company) {
   if (text.includes("inverter")) return "⚡";
   if (text.includes("shop") || text.includes("supplier")) return "🏪";
   if (text.includes("engineering") || text.includes("epc")) return "🏗️";
-  return "🌞"; // default solar
+  return "🌞";
 }
-  
+
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("listings");
   const searchInput = document.getElementById("searchInput");
   let companies = [];
 
-  fetch("data/companies.json")
+  fetch("./data/companies.json")   // muhimu sana
     .then(res => res.json())
     .then(data => {
       companies = Array.isArray(data) ? data : [data];
       renderCompanies(companies);
+    })
+    .catch(err => {
+      container.innerHTML = "<p>Failed to load companies data.</p>";
+      console.error(err);
     });
 
   function renderCompanies(list) {
-  container.innerHTML = "";
-  if (!list.length) {
-    container.innerHTML = "<p>No companies found.</p>";
-    return;
+    container.innerHTML = "";
+    if (!list.length) {
+      container.innerHTML = "<p>No companies found.</p>";
+      return;
+    }
+
+    list.forEach(c => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const icon = getIcon(c);
+
+      card.innerHTML = `
+        <div class="card-icon">${icon}</div>
+
+        <div class="card-body">
+          <h2>${c.business_name}</h2>
+          <small>${c.region || "Tanzania"}</small>
+
+          <div class="badges">
+            <span class="badge">${c.category || "Solar Company"}</span>
+            <span class="badge">${c.region || "Tanzania"}</span>
+          </div>
+
+          <p>${(c.description_en || "").substring(0,120)}...</p>
+
+          <div class="actions">
+            <a class="btn whatsapp"
+               href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory"
+               target="_blank">
+              WhatsApp
+            </a>
+            <a class="btn call"
+               href="company.html?slug=${c.slug}">
+              View
+            </a>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
   }
 
-  list.forEach((c, index) => {
-  const card = document.createElement("div");
-  card.className = "card";
-
-  const icon = getIcon(c);
-
-  card.innerHTML = `
-    <div class="card-icon">${icon}</div>
-
-    <div class="card-body">
-      <h2>${c.business_name}</h2>
-      <small>${c.region || "Tanzania"}</small>
-
-      <div class="badges">
-        <span class="badge">${c.category || "Solar Company"}</span>
-        <span class="badge">${c.region || "Tanzania"}</span>
-      </div>
-
-      <p>${(c.description_en || "").substring(0,120)}...</p>
-
-      <div class="actions">
-        <a class="btn whatsapp"
-           href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory"
-           target="_blank">
-          WhatsApp
-        </a>
-        <a class="btn call"
-           href="company.html?slug=${c.slug}">
-          View
-        </a>
-      </div>
-    </div>
-  `;
-
-  container.appendChild(card);
-});
-
+  // search event lazima iwe hapa nje
   searchInput.addEventListener("keyup", function () {
     const q = this.value.toLowerCase();
     const filtered = companies.filter(c =>
-      (c.business_name||"").toLowerCase().includes(q) ||
-      (c.region||"").toLowerCase().includes(q) ||
-      (c.description_en||"").toLowerCase().includes(q)
+      (c.business_name || "").toLowerCase().includes(q) ||
+      (c.region || "").toLowerCase().includes(q) ||
+      (c.description_en || "").toLowerCase().includes(q)
     );
     renderCompanies(filtered);
   });
 });
 </script>
+
 
 </body>
 </html>
