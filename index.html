@@ -312,70 +312,139 @@ function getIcon(company) {
     (company.description_en || "")
   ).toLowerCase();
 
-  if (text.includes("installer") || text.includes("installation")) return "🛠️";
+  if (text.includes("installer") || text.includes("installation")) return "🔧";
   if (text.includes("battery")) return "🔋";
   if (text.includes("panel")) return "☀️";
   if (text.includes("inverter")) return "⚡";
+  if (text.includes("shop") || text.includes("supplier")) return "🏪";
+  if (text.includes("engineering") || text.includes("epc")) return "🏗️";
   return "🌞";
 }
 
-function createCard(c){
-  const card = document.createElement("div");
-  card.className = "card";
+document.addEventListener("DOMContentLoaded", function () {
+  const featuredContainer = document.getElementById("featured");
+  const newlyAddedContainer = document.getElementById("newly-added");
+  const allContainer = document.getElementById("listings");
+  const pagination = document.getElementById("pagination");
 
-  const icon = getIcon(c);
-
-  card.innerHTML = `
-    <div class="card-icon">${icon}</div>
-    <div class="card-body">
-      <h2>${c.business_name}</h2>
-      <small>${c.region || "Tanzania"}</small>
-
-      <div class="badges">
-        <span class="badge">${c.category || "Solar Company"}</span>
-        <span class="badge">${c.region || "Tanzania"}</span>
-      </div>
-
-      <p>${(c.description_en || "").substring(0,100)}...</p>
-
-      <div class="actions">
-        <a class="btn lead"
-           href="company.html?company=${encodeURIComponent(c.business_name)}">
-          View
-        </a>
-      </div>
-    </div>
-  `;
-  return card;
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-  const featured = document.getElementById("featured");
-  const newly = document.getElementById("new");
-  const listings = document.getElementById("listings");
+  const itemsPerPage = 12;
+  let currentPage = 1;
+  let companies = [];
 
   fetch("./data/companies.json")
     .then(res => res.json())
     .then(data => {
-      const companies = Array.isArray(data) ? data : [data];
+      companies = Array.isArray(data) ? data : [data];
 
-      // 1. Featured = companies za kwanza 4
-      companies.slice(0,4).forEach(c => {
-        featured.appendChild(createCard(c));
-      });
-
-      // 2. Newly Added = companies za mwisho 4
-      companies.slice(-4).forEach(c => {
-        newly.appendChild(createCard(c));
-      });
-
-      // 3. All Companies = zote
-      companies.forEach(c => {
-        listings.appendChild(createCard(c));
-      });
+      renderFeatured();
+      renderNewlyAdded();
+      renderPage(1);
+      renderPagination();
     });
+
+  function createCard(c) {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const icon = getIcon(c);
+
+    card.innerHTML = `
+      <div class="card-icon">${icon}</div>
+      <div class="card-body">
+        <h2>${c.business_name}</h2>
+        <small>${c.region || "Tanzania"}</small>
+
+        <div class="badges">
+          <span class="badge">${c.category || "Solar Company"}</span>
+          <span class="badge">${c.region || "Tanzania"}</span>
+        </div>
+
+        <p>${(c.description_en || "").substring(0,120)}...</p>
+
+        <div class="actions">
+          <a class="btn lead"
+             href="company.html?company=${encodeURIComponent(c.business_name)}">
+             View
+          </a>
+        </div>
+      </div>
+    `;
+    return card;
+  }
+
+  /* FEATURED – chukua kampuni 6 za mwanzo */
+  function renderFeatured() {
+    featuredContainer.innerHTML = "";
+    companies.slice(0, 6).forEach(c => {
+      featuredContainer.appendChild(createCard(c));
+    });
+  }
+
+  /* NEWLY ADDED – chukua 6 za mwisho */
+  function renderNewlyAdded() {
+    newlyAddedContainer.innerHTML = "";
+    companies.slice(-6).forEach(c => {
+      newlyAddedContainer.appendChild(createCard(c));
+    });
+  }
+
+  /* ALL SOLAR COMPANIES (pagination) */
+  function renderPage(page) {
+    currentPage = page;
+    allContainer.innerHTML = "";
+
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const sliced = companies.slice(start, end);
+
+    sliced.forEach(c => {
+      allContainer.appendChild(createCard(c));
+    });
+  }
+
+  function renderPagination() {
+    pagination.innerHTML = "";
+    const pageCount = Math.ceil(companies.length / itemsPerPage);
+
+    // Prev
+    const prev = document.createElement("button");
+    prev.textContent = "← Prev";
+    prev.onclick = () => {
+      if (currentPage > 1) {
+        renderPage(currentPage - 1);
+        renderPagination();
+      }
+    };
+    pagination.appendChild(prev);
+
+    // Pages
+    for (let i = 1; i <= pageCount; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active");
+
+      btn.onclick = () => {
+        renderPage(i);
+        renderPagination();
+        window.scrollTo({ top: 700, behavior: "smooth" });
+      };
+      pagination.appendChild(btn);
+    }
+
+    // Next
+    const next = document.createElement("button");
+    next.textContent = "Next →";
+    next.onclick = () => {
+      if (currentPage < pageCount) {
+        renderPage(currentPage + 1);
+        renderPagination();
+      }
+    };
+    pagination.appendChild(next);
+  }
 });
 </script>
+
   
   
 </body>
