@@ -150,12 +150,14 @@ body {
   margin: 8px 0;
 }
 
-.card-image {
-  width: 100%;
-  height: 180px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.card-icon {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  font-size: 48px;
+  color: #0d47a1;
 }
 
 .badges {
@@ -237,13 +239,21 @@ footer {
 </footer>
 
 <script>
-const stockImages = [
-  "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1584277261846-c6a1672ed979?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1617957743103-310accdf7c75?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1624397640148-949b1732bbbf?auto=format&fit=crop&w=900&q=80"
-];
+function getIcon(company) {
+  const text = (
+    (company.business_name || "") +
+    (company.category || "") +
+    (company.description_en || "")
+  ).toLowerCase();
+
+  if (text.includes("installer") || text.includes("installation")) return "🔧";
+  if (text.includes("battery")) return "🔋";
+  if (text.includes("panel")) return "☀️";
+  if (text.includes("inverter")) return "⚡";
+  if (text.includes("shop") || text.includes("supplier")) return "🏪";
+  if (text.includes("engineering") || text.includes("epc")) return "🏗️";
+  return "🌞"; // default solar
+}
   
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("listings");
@@ -265,44 +275,41 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   list.forEach((c, index) => {
-    const card = document.createElement("div");   // HII ILIOKOSA
-    card.className = "card";
+  const card = document.createElement("div");
+  card.className = "card";
 
-    const image = stockImages[index % stockImages.length];
+  const icon = getIcon(c);
 
-    card.innerHTML = `
-      <div class="card-image" style="background-image: url('${image}')"></div>
+  card.innerHTML = `
+    <div class="card-icon">${icon}</div>
 
-      <div class="card-body">
-        <h2>${c.business_name}</h2>
-        <small>${c.region || "Tanzania"}</small>
+    <div class="card-body">
+      <h2>${c.business_name}</h2>
+      <small>${c.region || "Tanzania"}</small>
 
-        <div class="badges">
-          <span class="badge">${c.category || "Solar Company"}</span>
-          <span class="badge">${c.region || "Tanzania"}</span>
-        </div>
-
-        <p>${(c.description_en || "").substring(0,120)}...</p>
-
-        <div class="actions">
-          <a class="btn whatsapp"
-             href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory"
-             target="_blank">
-            WhatsApp
-          </a>
-          <a class="btn call"
-             href="company.html?slug=${c.slug}">
-            View
-          </a>
-        </div>
+      <div class="badges">
+        <span class="badge">${c.category || "Solar Company"}</span>
+        <span class="badge">${c.region || "Tanzania"}</span>
       </div>
-    `;
 
-    container.appendChild(card);
-  });
-}
+      <p>${(c.description_en || "").substring(0,120)}...</p>
 
+      <div class="actions">
+        <a class="btn whatsapp"
+           href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory"
+           target="_blank">
+          WhatsApp
+        </a>
+        <a class="btn call"
+           href="company.html?slug=${c.slug}">
+          View
+        </a>
+      </div>
+    </div>
+  `;
 
+  container.appendChild(card);
+});
 
   searchInput.addEventListener("keyup", function () {
     const q = this.value.toLowerCase();
