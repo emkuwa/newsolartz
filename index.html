@@ -188,12 +188,22 @@ body{
 }
 
 /* ================= BLOG ================= */
-.blog-container{
-  padding:20px 5%;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+.blog-container .card-body{
+  text-align:center;
 }
+
+.blog-container h3{
+  color:#0d47a1;
+}
+
+.blog-container p{
+  font-size:14px;
+}
+.blog-container .btn{
+  display:inline-block;
+  margin:10px auto 0;
+}
+
 
 /* ================= FOOTER ================= */
 footer{
@@ -294,5 +304,79 @@ footer{
 © 2026 Solar Tanzania Directory
 </footer>
 
+<script>
+function getIcon(company) {
+  const text = (
+    (company.business_name || "") +
+    (company.category || "") +
+    (company.description_en || "")
+  ).toLowerCase();
+
+  if (text.includes("installer") || text.includes("installation")) return "🛠️";
+  if (text.includes("battery")) return "🔋";
+  if (text.includes("panel")) return "☀️";
+  if (text.includes("inverter")) return "⚡";
+  return "🌞";
+}
+
+function createCard(c){
+  const card = document.createElement("div");
+  card.className = "card";
+
+  const icon = getIcon(c);
+
+  card.innerHTML = `
+    <div class="card-icon">${icon}</div>
+    <div class="card-body">
+      <h2>${c.business_name}</h2>
+      <small>${c.region || "Tanzania"}</small>
+
+      <div class="badges">
+        <span class="badge">${c.category || "Solar Company"}</span>
+        <span class="badge">${c.region || "Tanzania"}</span>
+      </div>
+
+      <p>${(c.description_en || "").substring(0,100)}...</p>
+
+      <div class="actions">
+        <a class="btn lead"
+           href="company.html?company=${encodeURIComponent(c.business_name)}">
+          View
+        </a>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  const featured = document.getElementById("featured");
+  const newly = document.getElementById("new");
+  const listings = document.getElementById("listings");
+
+  fetch("./data/companies.json")
+    .then(res => res.json())
+    .then(data => {
+      const companies = Array.isArray(data) ? data : [data];
+
+      // 1. Featured = companies za kwanza 4
+      companies.slice(0,4).forEach(c => {
+        featured.appendChild(createCard(c));
+      });
+
+      // 2. Newly Added = companies za mwisho 4
+      companies.slice(-4).forEach(c => {
+        newly.appendChild(createCard(c));
+      });
+
+      // 3. All Companies = zote
+      companies.forEach(c => {
+        listings.appendChild(createCard(c));
+      });
+    });
+});
+</script>
+  
+  
 </body>
 </html>
