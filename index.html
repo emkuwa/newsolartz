@@ -83,7 +83,6 @@
 .add-btn:hover {
   background: #17a673;
 }
-
   
 .top-banner a {
   margin-left: 10px;
@@ -106,7 +105,31 @@ body {
   background: #eef2f8;
   color: #333;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  gap: 8px;
+}
 
+.pagination button {
+  background: #0d47a1;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagination button.active {
+  background: #f57c00;
+}
+
+.pagination button:hover {
+  opacity: 0.9;
+}
+  
 /* HERO */
 .hero {
   position: relative;
@@ -402,6 +425,8 @@ footer {
 
 
 <div class="container" id="listings">Loading companies...</div>
+  
+<div class="pagination" id="pagination"></div>
 
 <footer>
   © 2026 Solar Tanzania Directory
@@ -426,28 +451,33 @@ function getIcon(company) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("listings");
-  const searchInput = document.getElementById("searchInput");
+  const pagination = document.getElementById("pagination");
+
+  const itemsPerPage = 12;
+  let currentPage = 1;
   let companies = [];
 
-  fetch("./data/companies.json")   // muhimu sana
+  fetch("./data/companies.json")
     .then(res => res.json())
     .then(data => {
       companies = Array.isArray(data) ? data : [data];
-      renderCompanies(companies);
+      renderPage(1);
+      renderPagination();
     })
     .catch(err => {
       container.innerHTML = "<p>Failed to load companies data.</p>";
       console.error(err);
     });
 
-  function renderCompanies(list) {
+  function renderPage(page) {
+    currentPage = page;
     container.innerHTML = "";
-    if (!list.length) {
-      container.innerHTML = "<p>No companies found.</p>";
-      return;
-    }
 
-    list.forEach(c => {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const sliced = companies.slice(start, end);
+
+    sliced.forEach(c => {
       const card = document.createElement("div");
       card.className = "card";
 
@@ -455,7 +485,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       card.innerHTML = `
         <div class="card-icon">${icon}</div>
-
         <div class="card-body">
           <h2>${c.business_name}</h2>
           <small>${c.region || "Tanzania"}</small>
@@ -467,31 +496,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
           <p>${(c.description_en || "").substring(0,120)}...</p>
 
-         <div class="actions">
-  <a class="btn lead"
-     href="lead.html?company=${encodeURIComponent(c.business_name)}">
-    Request Quote
-  </a>
-</div>
-
+          <div class="actions">
+            <a class="btn lead"
+              href="lead.html?company=${encodeURIComponent(c.business_name)}">
+              Request Quote
+            </a>
+          </div>
+        </div>
       `;
 
       container.appendChild(card);
     });
   }
 
-  // search event lazima iwe hapa nje
-  searchInput.addEventListener("keyup", function () {
-    const q = this.value.toLowerCase();
-    const filtered = companies.filter(c =>
-      (c.business_name || "").toLowerCase().includes(q) ||
-      (c.region || "").toLowerCase().includes(q) ||
-      (c.description_en || "").toLowerCase().includes(q)
-    );
-    renderCompanies(filtered);
-  });
+  function renderPagination() {
+    pagination.innerHTML = "";
+    const pageCount = Math.ceil(companies.length / itemsPerPage);
+
+    for (let i = 1; i <= pageCount; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active");
+
+      btn.addEventListener("click", () => {
+        renderPage(i);
+        renderPagination();
+        window.scrollTo({ top: 600, behavior: "smooth" });
+      });
+
+      pagination.appendChild(btn);
+    }
+  }
 });
 </script>
+
 
 
 </body>
