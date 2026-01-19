@@ -29,14 +29,17 @@ const SEARCH_QUERIES = [
 async function fetchFromScrapingBee(query) {
   const url = `https://app.scrapingbee.com/api/v1/google?api_key=${SCRAPINGBEE_KEY}&q=${encodeURIComponent(
     query
-  )}&gl=tz&hl=en&num=10`;
+  )}&gl=tz&hl=en&nb_results=10`;
 
   const response = await fetch(url);
+
   if (!response.ok) {
-    throw new Error(`ScrapingBee error: ${response.status}`);
+    const text = await response.text();
+    throw new Error(`ScrapingBee error ${response.status}: ${text}`);
   }
 
-  return await response.json();
+  const data = await response.json();
+  return data;
 }
 
 function transformToCompany(item) {
