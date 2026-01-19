@@ -26,7 +26,7 @@ const SEARCH_QUERIES = [
   "solar installer Dodoma"
 ];
 
-async function fetchFromScrapingBee(query) {
+async function fetchFromScrapingBee(query, retries = 3) {
   const url =
     "https://app.scrapingbee.com/api/v1/google" +
     `?api_key=${SCRAPINGBEE_KEY}` +
@@ -37,15 +37,32 @@ async function fetchFromScrapingBee(query) {
 
   console.log("🌍 ScrapingBee URL:", url);
 
-  const response = await fetch(url);
+  try {
+    const response = await fetch(url);
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`ScrapingBee error ${response.status}: ${errorText}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+
+      // Kama ni 500 error na bado tuna retries, jaribu tena
+      if (response.status === 500 && retries > 0) {
+        console.log(`🔁 Server error, retrying... (${retries} left)`);
+        await new Promise(r => setTimeout(r, 5000)); // subiri sekunde 5
+        return fetchFromScrapingBee(query, retries - 1);
+      }
+
+      throw new Error(`ScrapingBee error ${response.status}: ${errorText}`);
+    }
+
+    return await response.json();
+
+  } catch (err) {
+    if (retries > 0) {
+      console.log(`⚠️ Network error, retrying... (${retries} left)`);
+      await new Promise(r => setTimeout(r, 5000));
+      return fetchFromScrapingBee(query, retries - 1);
+    }
+    throw err;
   }
-
-  const data = await response.json();
-  return data;
 }
 
 
@@ -85,39 +102,45 @@ async function main() {
   let counter = 1;
 
   for (const query of SEARCH_QUERIES) {
-    console.log(`🔍 Searching: ${query}`);
+  console.log(`🔍 Searching: ${query}`);
 
-    const data = await fetchFromScrapingBee(query);
+  const data = await fetchFromScrapingBee(query);
 
-    if (!data.organic_results) {
-      console.log("⚠️ No organic results for:", query);
-      continue;
-    }
-
-    for (const item of data.organic_results) {
-      const company = {
-        id: `auto_${counter++}`,
-        business_name: item.title || "Unknown Solar Company",
-        category: "Solar Company",
-        region: "Tanzania",
-        district: "",
-        headline_en: item.title || "",
-        headline_sw: "",
-        description_en: item.description || "",
-        description_sw: "",
-        services: [],
-        products: [],
-        website: item.url || "",
-        domain: item.domain || "",
-        slug: (item.title || "")
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-|-$/g, "")
-      };
-
-      allCompanies.push(company);
-    }
+  if (!data.organic_results) {
+    console.log("⚠️ No organic results for:", query);
+    continue;
   }
+
+  console.log(`📦 Found ${data.organic_results.length} results`);
+
+  for (const item of data.organic_results) {
+    const company = {
+      id: `auto_${counter++}`,
+      business_name: item.title || "Unknown Solar Company",
+      category: "Solar Company",
+      region: "Tanzania",
+      district: "",
+      headline_en: item.title || "",
+      headline_sw: "",
+      description_en: item.description || "",
+      description_sw: "",
+      services: [],
+      products: [],
+      website: item.url || "",
+      domain: item.domain || "",
+      slug: (item.title || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "")
+    };
+
+    allCompanies.push(company);
+  }
+
+  // Pumzisha API sekunde 3 kabla ya search inayofuata
+  await new Promise(r => setTimeout(r, 3000));
+}
+
 
   console.log(`💾 Saving ${allCompanies.length} companies to data/companies.json...`);
 
