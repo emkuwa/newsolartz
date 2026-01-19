@@ -17,82 +17,84 @@ body {
 /* HERO */
 .hero {
   position: relative;
-  height: 70vh;
-  background: url("https://res.cloudinary.com/dn6aezjpa/image/upload/v1768801950/Screenshot_2026-01-19_at_8.51.30_AM_dx2ihq.jpg")
+  height: 75vh;
+  background: url("https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1600&q=80")
               center/cover no-repeat;
-}
-
-.hero .overlay {
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.25);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1100px;
   color: white;
-  padding: 20px;
 }
 
 .hero h1 {
-  font-size: 56px;
-  margin: 0;
+  font-size: 52px;
   font-weight: 800;
-  color: #ffffff;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  margin-bottom: 10px;
 }
 
 .hero p {
   font-size: 20px;
-  margin: 10px 0 25px;
-  color: #f1f1f1;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  margin-bottom: 30px;
 }
 
-  background: url("https://res.cloudinary.com/dn6aezjpa/image/upload/v1768801950/Screenshot_2026-01-19_at_8.51.30_AM_dx2ihq.jpg") 
-              center/cover no-repeat;
+.hero-search-box {
+  background: rgba(0, 120, 160, 0.85);
+  padding: 20px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.hero-search-box .field {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.hero .overlay {
-  background: rgba(0, 0, 0, 0.35); /* kivuli kidogo tu ili maandishi yaonekane */
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  color: white;
-  padding: 20px 15px;
+.hero-search-box label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #e0f4ff;
 }
 
-.hero h1 {
-  color: #ffffff;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.6);
-}
-
-.hero p {
-  color: #f1f1f1;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-}
-
-.hero-search {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.hero-search input {
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: 30px;
+.hero-search-box input,
+.hero-search-box select {
+  padding: 12px;
+  border-radius: 5px;
   border: none;
-  font-size: 17px;
-  outline: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(4px);
+  font-size: 15px;
 }
+
+.search-btn {
+  background: #1cc88a;
+  color: white;
+  border: none;
+  padding: 14px 22px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-btn:hover {
+  background: #17a673;
+}
+
 
 
 /* CARDS */
@@ -223,18 +225,34 @@ footer {
 <body>
 
 <header class="hero">
-  <div class="overlay">
-    <h1>Solar Tanzania Directory</h1>
-    <p>Find trusted solar installers, suppliers & shops throughout Tanzania.</p>
-    <div class="hero-search">
-      <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="Search company, city or service..."
-      />
+  <div class="hero-content">
+    <h1>Find Trusted Solar Companies in Tanzania</h1>
+    <p>Search installers, suppliers & solar solution providers near you.</p>
+
+    <div class="hero-search-box">
+      <div class="field">
+        <label>Specializing in:</label>
+        <select>
+          <option value="">Select Category</option>
+          <option>Solar Installation</option>
+          <option>Solar Panels</option>
+          <option>Inverters</option>
+          <option>Batteries</option>
+          <option>Solar Engineering</option>
+          <option>Solar Shops</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Search by location:</label>
+        <input type="text" placeholder="City or Region (e.g Dar, Zanzibar)">
+      </div>
+
+      <button class="search-btn">Search Now</button>
     </div>
   </div>
 </header>
+
 
 <div class="container" id="listings">Loading companies...</div>
 
