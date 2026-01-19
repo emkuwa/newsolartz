@@ -1,98 +1,115 @@
 const fs = require("fs");
+const fetch = require("node-fetch");
 
 const SCRAPINGBEE_KEY = process.env.SCRAPINGBEE_API_KEY;
-const GOOGLE_AI_KEY = process.env.GOOGLE_AI_API_KEY;
 
-// Example query (utabadilisha kulingana na unavyotaka)
+if (!SCRAPINGBEE_KEY) {
+  console.error("❌ SCRAPINGBEE_API_KEY haijawekwa kwenye GitHub Secrets");
+  process.exit(1);
+}
+
 const SEARCH_QUERIES = [
   "solar company Tanzania",
   "solar installer Tanzania",
-  "solar technician Tanzania",
   "solar fundi Tanzania",
   "solar panels shop Tanzania",
   "solar inverter shop Tanzania",
   "solar battery supplier Tanzania",
-  "renewable energy shop Tanzania",
 
   "solar company Zanzibar",
   "solar installer Zanzibar",
-  "solar fundi Zanzibar",
   "solar shop Zanzibar",
 
   "solar installer Dar es Salaam",
-  "solar fundi Dar es Salaam",
-  "solar panels shop Dar es Salaam",
-
   "solar installer Arusha",
-  "solar fundi Arusha",
-  "solar shop Arusha",
-
   "solar installer Mwanza",
-  "solar fundi Mwanza",
-  "solar shop Mwanza",
-
   "solar installer Mbeya",
-  "solar fundi Mbeya",
-  "solar shop Mbeya",
-
-  "solar installer Dodoma",
-  "solar fundi Dodoma",
-
-  "solar installer Tanga",
-  "solar installer Morogoro",
-  "solar installer Iringa",
-  "solar installer Moshi",
-  "solar installer Songea"
+  "solar installer Dodoma"
 ];
 
+// Piga ScrapingBee Google API
 async function fetchFromScrapingBee(query) {
-  const url = `https://app.scrapingbee.com/api/v1/?api_key=${SCRAPINGBEE_KEY}&search=${encodeURIComponent(query)}&nb_results=10`;
+  const url = `https://app.scrapingbee.com/api/v1/google?api_key=${SCRAPINGBEE_KEY}&q=${encodeURIComponent(
+    query
+  )}&gl=tz&hl=en&num=10`;
 
   const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`ScrapingBee error: ${response.status}`);
+  }
+
   const data = await response.json();
   return data;
 }
 
-// Dummy transformer (baadaye tutaunganisha na Google AI Studio API)
-function transformToCompanies(html) {
-  // Kwa sasa tunarudisha mfano tu ili workflow isikufe
-  return [
-    {
-      id: "auto001",
-      business_name: "Auto Generated Solar Company",
-      category: "Solar Company",
-      region: "Tanzania",
-      district: "",
-      headline_en: "Solar solutions from automation",
-      headline_sw: "Suluhisho za jua kutoka mfumo wa kiotomatiki",
-      description_en: "This company was generated automatically.",
-      description_sw: "Kampuni hii ilitengenezwa na mfumo wa kiotomatiki.",
-      services: ["Installation", "Maintenance"],
-      products: ["Solar Panels", "Inverters"],
-      cta_whatsapp_en: "Chat on WhatsApp",
-      cta_whatsapp_sw: "Ongea WhatsApp",
-      cta_call_en: "Call Now",
-      cta_call_sw: "Piga Simu",
-      slug: "auto-generated-solar-company"
-    }
-  ];
+// Badilisha Google result → Company Object
+function transformToCompany(item) {
+  const name = item.title
+    .replace(/–.*$/, "")
+    .replace(/\|.*$/, "")
+    .trim();
+
+  return {
+    id: item.domain.replace(/\W/g, ""),
+    business_name: name,
+    category: "Solar Company",
+    region: "Tanzania",
+    district: "",
+    headline_en: "Solar system design, installation and maintenance",
+    headline_sw: "Ubunifu, usimikaji na matengenezo ya mifumo ya nishati ya jua",
+    description_en: item.description || "",
+    description_sw: "",
+    services: ["Installation", "Maintenance", "Consultation"],
+    products: ["Solar Panels", "Inverters", "Batteries"],
+    website: item.url,
+    domain: item.domain,
+    cta_whatsapp_en: "Chat on WhatsApp",
+    cta_whatsapp_sw: "Ongea WhatsApp",
+    cta_call_en: "Call Now",
+    cta_call_sw: "Piga Simu",
+    slug: name.toLowerCase().replace(/\s+/g, "-")
+  };
 }
 
 async function main() {
-  console.log("🔎 Fetching data from ScrapingBee...");
-  const rawHtml = await fetchFromScrapingBee();
+  console.log("🚀 Starting Solar Companies Auto Update…");
 
-  console.log("🤖 Transforming data...");
-  const companies = transformToCompanies(rawHtml);
+  let allCompanies = [];
+  const seenDomains = new Set();
 
-  console.log("💾 Saving companies.json...");
+  for (const query of SEARCH_QUERIES) {
+    console.log(`🔍 Searching: ${query}`);
+
+    const data = await fetchFromScrapingBee(query);
+
+    if (!data.organic_results) continue;
+
+    for (const item of data.organic_results) {
+      if (!item.domain) continue;
+
+      // Epuka duplicate
+      if (seenDomains.has(item.domain)) continue;
+      seenDomains.add(item.domain);
+
+      const company = transformToCompany(item);
+      allCompanies.push(company);
+    }
+  }
+
+  if (allCompanies.length === 0) {
+    console.log("⚠️ Hakuna kampuni iliyopatikana.");
+    return;
+  }
+
+  console.log(`💾 Saving ${allCompanies.length} companies to companies.json`);
+
   fs.writeFileSync(
     "data/companies.json",
-    JSON.stringify(companies, null, 2),
+    JSON.stringify(allCompanies, null, 2),
     "utf-8"
   );
 
-  console.log("✅ Update complete!");
+  console.log("✅ Update complete. Real companies saved!");
 }
 
 main().catch(err => {
