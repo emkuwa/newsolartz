@@ -193,19 +193,19 @@
   },
   {
     "id": "auto_13",
-    "business_name": "Rex Energy – Think solar, think Rex",
+    "business_name": "Segen Tanzania | Solar Panels, Inverters, Batteries",
     "category": "Solar Company",
     "region": "Tanzania",
     "district": "",
-    "headline_en": "Rex Energy – Think solar, think Rex",
+    "headline_en": "Segen Tanzania | Solar Panels, Inverters, Batteries",
     "headline_sw": "",
-    "description_en": "With over 25 years of experience, Rex Energy is Tanzania's leading solar energy contractor providing alternative power solutions in Tanzania.Read more",
+    "description_en": "Discover Segen Tanzania, the trusted solar distributor in Dar es Salaam and across Tanzania. Shop solar panels, inverters, and storage with flexible finance ...",
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://rexsolarenergy.com/rex/",
-    "domain": "rexsolarenergy.com",
-    "slug": "rex-energy-think-solar-think-rex"
+    "website": "https://segensolar.tz/",
+    "domain": "segensolar.tz",
+    "slug": "segen-tanzania-solar-panels-inverters-batteries"
   },
   {
     "id": "auto_14",
@@ -241,22 +241,6 @@
   },
   {
     "id": "auto_16",
-    "business_name": "Segen Tanzania | Solar Panels, Inverters, Batteries",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Segen Tanzania | Solar Panels, Inverters, Batteries",
-    "headline_sw": "",
-    "description_en": "Discover Segen Tanzania, the trusted solar distributor in Dar es Salaam and across Tanzania. Shop solar panels, inverters, and storage with flexible finance ...",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://segensolar.tz/",
-    "domain": "segensolar.tz",
-    "slug": "segen-tanzania-solar-panels-inverters-batteries"
-  },
-  {
-    "id": "auto_17",
     "business_name": "Rooftop Solar Systems",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -270,6 +254,22 @@
     "website": "https://sdg.tic.go.tz/opportunities/rooftop-solar-systems/",
     "domain": "sdg.tic.go.tz",
     "slug": "rooftop-solar-systems"
+  },
+  {
+    "id": "auto_17",
+    "business_name": "A1 Solar – Optimized for the future",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "A1 Solar – Optimized for the future",
+    "headline_sw": "",
+    "description_en": "Our team of experienced engineers and technicians is dedicated to installing state-of-the-art solar panel systems that ensure continuous power supply.Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://a1solar.co.tz/",
+    "domain": "a1solar.co.tz",
+    "slug": "a1-solar-optimized-for-the-future"
   },
   {
     "id": "auto_18",
@@ -491,7 +491,7 @@
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://beichee.co.tz/product-category/solar/?srsltid=AfmBOopF4-JJQldeM5XK-z8gpoOpOoIecQPJnIfbKOVV7VDWvKx1c257",
+    "website": "https://beichee.co.tz/product-category/solar/?srsltid=AfmBOooCU_PW9yX-WlUYSFqjsN8eyRV3UBuHNJDffhqgrxhzBM5iZbIo",
     "domain": "beichee.co.tz",
     "slug": "solar-power-in-tanzania-panels-batteries-inverters"
   },
@@ -561,22 +561,6 @@
   },
   {
     "id": "auto_36",
-    "business_name": "AG Energies | Home",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "AG Energies | Home",
-    "headline_sw": "",
-    "description_en": "AG ENERGIES is a leading EPC company that engineers, procures, and constructs solar energy projects. We're also renowned distributors of high-quality solar ...",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://www.agenergies.co.tz/",
-    "domain": "www.agenergies.co.tz",
-    "slug": "ag-energies-home"
-  },
-  {
-    "id": "auto_37",
     "business_name": "Solar Inverters",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -592,7 +576,7 @@
     "slug": "solar-inverters"
   },
   {
-    "id": "auto_38",
+    "id": "auto_37",
     "business_name": "Inverters – Luminous",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -608,7 +592,7 @@
     "slug": "inverters-luminous"
   },
   {
-    "id": "auto_39",
+    "id": "auto_38",
     "business_name": "Shop Inverters in Dar Tanzania",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -619,12 +603,12 @@
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://empire.co.tz/collections/inverters?srsltid=AfmBOopPmADacKU-O8AN6w8mkYxZ1W2avB9M6SeEIgQeurxiKhi5zYQc",
+    "website": "https://empire.co.tz/collections/inverters?srsltid=AfmBOopby6bDl3M-v9r7BFF9aA6xFJ6okrqFKfVLD5oXN5vhwiPD6RtP",
     "domain": "empire.co.tz",
     "slug": "shop-inverters-in-dar-tanzania"
   },
   {
-    "id": "auto_40",
+    "id": "auto_39",
     "business_name": "Apollo Solar Tanzania (@apollosolar.tz) · Dar es Salaam",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -640,7 +624,7 @@
     "slug": "apollo-solar-tanzania-apollosolar-tz-dar-es-salaam"
   },
   {
-    "id": "auto_41",
+    "id": "auto_40",
     "business_name": "Solar Products - Africab ALL in 1 Hyrbid Inverter 1KW",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -656,7 +640,7 @@
     "slug": "solar-products-africab-all-in-1-hyrbid-inverter-1kw"
   },
   {
-    "id": "auto_42",
+    "id": "auto_41",
     "business_name": "Pure Sine Wave Inverters - Arusha",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -672,7 +656,7 @@
     "slug": "pure-sine-wave-inverters-arusha"
   },
   {
-    "id": "auto_43",
+    "id": "auto_42",
     "business_name": "Solar Power in Tanzania | Panels, Batteries & Inverters",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -683,12 +667,12 @@
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://beichee.co.tz/product-category/solar/?srsltid=AfmBOood0sfFdq36GgE6kTe8fDM4l6aD_VvJ0Lf-XpkxAun7-IZOvfLa",
+    "website": "https://beichee.co.tz/product-category/solar/?srsltid=AfmBOornDRcVJ5vYxrF0Wu1Ps4wp_8tSxSrRTThwTut3nm6sVDD66kf3",
     "domain": "beichee.co.tz",
     "slug": "solar-power-in-tanzania-panels-batteries-inverters"
   },
   {
-    "id": "auto_44",
+    "id": "auto_43",
     "business_name": "Solar Inverters_Energy Storage inverters",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -704,23 +688,7 @@
     "slug": "solar-inverters-energy-storage-inverters"
   },
   {
-    "id": "auto_45",
-    "business_name": "Solar Power Inverter Wholesale Price In Tanzania ...",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Solar Power Inverter Wholesale Price In Tanzania ...",
-    "headline_sw": "",
-    "description_en": "One-stop-shop for solar inverter, solar controller, battery, solar panels and solar system. Barry Yang. Sales Manager. +255 768958886.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://www.zamdon.com/pages/tanzania",
-    "domain": "www.zamdon.com",
-    "slug": "solar-power-inverter-wholesale-price-in-tanzania"
-  },
-  {
-    "id": "auto_46",
+    "id": "auto_44",
     "business_name": "Dayliff 200Ah 12V Sealed Solar Battery",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -736,7 +704,7 @@
     "slug": "dayliff-200ah-12v-sealed-solar-battery"
   },
   {
-    "id": "auto_47",
+    "id": "auto_45",
     "business_name": "Batteries",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -752,23 +720,7 @@
     "slug": "batteries"
   },
   {
-    "id": "auto_48",
-    "business_name": "Luminous Batteries Tanzania | Solar Energy Storage ...",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Luminous Batteries Tanzania | Solar Energy Storage ...",
-    "headline_sw": "",
-    "description_en": "Segen Tanzania supplies Luminous batteries for homes and businesses. Reliable lithium storage, modular systems, and long warranties.",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://segensolar.tz/products/storage/storage-luminous/",
-    "domain": "segensolar.tz",
-    "slug": "luminous-batteries-tanzania-solar-energy-storage"
-  },
-  {
-    "id": "auto_49",
+    "id": "auto_46",
     "business_name": "solar battery 12V/150Ah ASP",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -784,7 +736,23 @@
     "slug": "solar-battery-12v-150ah-asp"
   },
   {
-    "id": "auto_50",
+    "id": "auto_47",
+    "business_name": "Luminous Batteries Tanzania | Solar Energy Storage ...",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Luminous Batteries Tanzania | Solar Energy Storage ...",
+    "headline_sw": "",
+    "description_en": "Segen Tanzania supplies Luminous batteries for homes and businesses. Reliable lithium storage, modular systems, and long warranties.",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://segensolar.tz/products/storage/storage-luminous/",
+    "domain": "segensolar.tz",
+    "slug": "luminous-batteries-tanzania-solar-energy-storage"
+  },
+  {
+    "id": "auto_48",
     "business_name": "Best Solar Battery in Tanzania - fortuners.net",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -800,7 +768,7 @@
     "slug": "best-solar-battery-in-tanzania-fortuners-net"
   },
   {
-    "id": "auto_51",
+    "id": "auto_49",
     "business_name": "Solar Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -816,7 +784,23 @@
     "slug": "solar-solutions"
   },
   {
-    "id": "auto_52",
+    "id": "auto_50",
+    "business_name": "Solar Power in Tanzania | Panels, Batteries & Inverters",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Solar Power in Tanzania | Panels, Batteries & Inverters",
+    "headline_sw": "",
+    "description_en": "Shop solar power systems in Tanzania. Get solar panels, batteries & inverters for homes & businesses. Go green, cut costs & stay powered even off-grid!",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://beichee.co.tz/product-category/solar/?srsltid=AfmBOoqsk--F2h8G109SuNypEaAH-EXH_jZaUyWha52XxJOEkEKwVOJh",
+    "domain": "beichee.co.tz",
+    "slug": "solar-power-in-tanzania-panels-batteries-inverters"
+  },
+  {
+    "id": "auto_51",
     "business_name": "Photons Energy Ltd – Where Nature turns to Energy",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -832,7 +816,7 @@
     "slug": "photons-energy-ltd-where-nature-turns-to-energy"
   },
   {
-    "id": "auto_53",
+    "id": "auto_52",
     "business_name": "Battery, Solar & Power Backup (@chlorideexidetanzania)",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -848,23 +832,7 @@
     "slug": "battery-solar-power-backup-chlorideexidetanzania"
   },
   {
-    "id": "auto_54",
-    "business_name": "Solar Power in Tanzania | Panels, Batteries & Inverters",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Solar Power in Tanzania | Panels, Batteries & Inverters",
-    "headline_sw": "",
-    "description_en": "Shop solar power systems in Tanzania. Get solar panels, batteries & inverters for homes & businesses. Go green, cut costs & stay powered even off-grid!",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://beichee.co.tz/product-category/solar/?srsltid=AfmBOoqUxsHbXdYUoy1kfABZWJXFxPtpW4s7Ak0LNver_f9njlmV6ILI",
-    "domain": "beichee.co.tz",
-    "slug": "solar-power-in-tanzania-panels-batteries-inverters"
-  },
-  {
-    "id": "auto_55",
+    "id": "auto_53",
     "business_name": "A1 Solar Zanzibar",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -880,7 +848,7 @@
     "slug": "a1-solar-zanzibar"
   },
   {
-    "id": "auto_56",
+    "id": "auto_54",
     "business_name": "Zanzibar Green Power Solution ZGPS | Official Website",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -896,7 +864,7 @@
     "slug": "zanzibar-green-power-solution-zgps-official-website"
   },
   {
-    "id": "auto_57",
+    "id": "auto_55",
     "business_name": "AG Energies | Home",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -912,7 +880,7 @@
     "slug": "ag-energies-home"
   },
   {
-    "id": "auto_58",
+    "id": "auto_56",
     "business_name": "Waka Energy - Solar Power Solutions for Tanzania",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -928,7 +896,7 @@
     "slug": "waka-energy-solar-power-solutions-for-tanzania"
   },
   {
-    "id": "auto_59",
+    "id": "auto_57",
     "business_name": "A1 Solar Zanzibar | Jambiani",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -944,7 +912,7 @@
     "slug": "a1-solar-zanzibar-jambiani"
   },
   {
-    "id": "auto_60",
+    "id": "auto_58",
     "business_name": "Energy Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -960,7 +928,7 @@
     "slug": "energy-solutions"
   },
   {
-    "id": "auto_61",
+    "id": "auto_59",
     "business_name": "Greenlink ReGen: Solar Tanzania Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -976,7 +944,7 @@
     "slug": "greenlink-regen-solar-tanzania-solutions"
   },
   {
-    "id": "auto_62",
+    "id": "auto_60",
     "business_name": "AG Energies to build a 20MWp Solar plant in Zanzibar",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -992,23 +960,23 @@
     "slug": "ag-energies-to-build-a-20mwp-solar-plant-in-zanzibar"
   },
   {
-    "id": "auto_63",
-    "business_name": "Simusolar – Financed Solutions for Agriculture",
+    "id": "auto_61",
+    "business_name": "Solar Tender Announced for Ambitious 18 MW Zanzibar ...",
     "category": "Solar Company",
     "region": "Tanzania",
     "district": "",
-    "headline_en": "Simusolar – Financed Solutions for Agriculture",
+    "headline_en": "Solar Tender Announced for Ambitious 18 MW Zanzibar ...",
     "headline_sw": "",
-    "description_en": "We have been providing the services and equipment farmers need to be more productive and to be independent of rain patterns and rising fuel prices, since 2016.Read more",
+    "description_en": "1 Jan 2025 — ZECO launches a tender for an 18 MW solar facility in Makunduchi to improve electricity in Zanzibar. Learn about this World Bank-funded ...",
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://simusolar.com/",
-    "domain": "simusolar.com",
-    "slug": "simusolar-financed-solutions-for-agriculture"
+    "website": "https://www.pvknowhow.com/news/solar-tender-announced-for-18-mw-zanzibar-projec/",
+    "domain": "www.pvknowhow.com",
+    "slug": "solar-tender-announced-for-ambitious-18-mw-zanzibar"
   },
   {
-    "id": "auto_64",
+    "id": "auto_62",
     "business_name": "A1 Solar Zanzibar",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1024,7 +992,7 @@
     "slug": "a1-solar-zanzibar"
   },
   {
-    "id": "auto_65",
+    "id": "auto_63",
     "business_name": "Waka Energy - Solar Power Solutions for Tanzania",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1040,7 +1008,7 @@
     "slug": "waka-energy-solar-power-solutions-for-tanzania"
   },
   {
-    "id": "auto_66",
+    "id": "auto_64",
     "business_name": "Energy Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1056,7 +1024,7 @@
     "slug": "energy-solutions"
   },
   {
-    "id": "auto_67",
+    "id": "auto_65",
     "business_name": "Zanzibar Green Power Solution ZGPS | Official Website",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1072,7 +1040,7 @@
     "slug": "zanzibar-green-power-solution-zgps-official-website"
   },
   {
-    "id": "auto_68",
+    "id": "auto_66",
     "business_name": "AG Energies | Home",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1088,7 +1056,7 @@
     "slug": "ag-energies-home"
   },
   {
-    "id": "auto_69",
+    "id": "auto_67",
     "business_name": "Solar System Installers in Tanzania | PV Companies List",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1104,7 +1072,7 @@
     "slug": "solar-system-installers-in-tanzania-pv-companies-list"
   },
   {
-    "id": "auto_70",
+    "id": "auto_68",
     "business_name": "A1 Solar Zanzibar | Jambiani",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1120,7 +1088,7 @@
     "slug": "a1-solar-zanzibar-jambiani"
   },
   {
-    "id": "auto_71",
+    "id": "auto_69",
     "business_name": "Greenlink ReGen: Solar Tanzania Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1136,7 +1104,7 @@
     "slug": "greenlink-regen-solar-tanzania-solutions"
   },
   {
-    "id": "auto_72",
+    "id": "auto_70",
     "business_name": "Solar Leader - Zanzibar, Tanzania (@solarleaderznz)",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1152,7 +1120,7 @@
     "slug": "solar-leader-zanzibar-tanzania-solarleaderznz"
   },
   {
-    "id": "auto_73",
+    "id": "auto_71",
     "business_name": "Waka Energy - Solar Power Solutions for Tanzania",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1168,7 +1136,7 @@
     "slug": "waka-energy-solar-power-solutions-for-tanzania"
   },
   {
-    "id": "auto_74",
+    "id": "auto_72",
     "business_name": "Zanzibar SOLAR SHOP Kikwajuni (@12Kikwajuni)",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1184,7 +1152,7 @@
     "slug": "zanzibar-solar-shop-kikwajuni-12kikwajuni"
   },
   {
-    "id": "auto_75",
+    "id": "auto_73",
     "business_name": "A1 Solar Zanzibar",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1200,7 +1168,7 @@
     "slug": "a1-solar-zanzibar"
   },
   {
-    "id": "auto_76",
+    "id": "auto_74",
     "business_name": "ECOFLOW SOLAR PANELS",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1216,7 +1184,7 @@
     "slug": "ecoflow-solar-panels"
   },
   {
-    "id": "auto_77",
+    "id": "auto_75",
     "business_name": "Solar Water Cooler - Optimal Water Solutions in Tanzania",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1232,7 +1200,7 @@
     "slug": "solar-water-cooler-optimal-water-solutions-in-tanzania"
   },
   {
-    "id": "auto_78",
+    "id": "auto_76",
     "business_name": "Kikwajuni Zanzibar Solar Shop",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1248,7 +1216,7 @@
     "slug": "kikwajuni-zanzibar-solar-shop"
   },
   {
-    "id": "auto_79",
+    "id": "auto_77",
     "business_name": "WAUZAJI WA SOLAR (@prosolarproducts) · Dar es Salaam",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1264,7 +1232,7 @@
     "slug": "wauzaji-wa-solar-prosolarproducts-dar-es-salaam"
   },
   {
-    "id": "auto_80",
+    "id": "auto_78",
     "business_name": "Solar Hot Water Heaters",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1280,7 +1248,7 @@
     "slug": "solar-hot-water-heaters"
   },
   {
-    "id": "auto_81",
+    "id": "auto_79",
     "business_name": "Greenlink ReGen: Solar Tanzania Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1296,7 +1264,7 @@
     "slug": "greenlink-regen-solar-tanzania-solutions"
   },
   {
-    "id": "auto_82",
+    "id": "auto_80",
     "business_name": "Baraka Solar Specialist Limited – Dealers in Design and ...",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1312,7 +1280,7 @@
     "slug": "baraka-solar-specialist-limited-dealers-in-design-and"
   },
   {
-    "id": "auto_83",
+    "id": "auto_81",
     "business_name": "AG Energies | Home",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1328,7 +1296,7 @@
     "slug": "ag-energies-home"
   },
   {
-    "id": "auto_84",
+    "id": "auto_82",
     "business_name": "Solar Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1344,7 +1312,7 @@
     "slug": "solar-solutions"
   },
   {
-    "id": "auto_85",
+    "id": "auto_83",
     "business_name": "Photons Energy Ltd – Where Nature turns to Energy",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1360,7 +1328,7 @@
     "slug": "photons-energy-ltd-where-nature-turns-to-energy"
   },
   {
-    "id": "auto_86",
+    "id": "auto_84",
     "business_name": "Segen Tanzania | Solar Panels, Inverters, Batteries",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1376,23 +1344,7 @@
     "slug": "segen-tanzania-solar-panels-inverters-batteries"
   },
   {
-    "id": "auto_87",
-    "business_name": "Solar Power Dar es Salaam",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Solar Power Dar es Salaam",
-    "headline_sw": "",
-    "description_en": "Power Providers designs, supplies and installs high-quality solar power solutions and provides professional support services for its clients.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://powerproviders.co.tz/solar-power-dar-es-salaam/",
-    "domain": "powerproviders.co.tz",
-    "slug": "solar-power-dar-es-salaam"
-  },
-  {
-    "id": "auto_88",
+    "id": "auto_85",
     "business_name": "Highedge Solar Tanzania – is a private company categorized ...",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1408,23 +1360,23 @@
     "slug": "highedge-solar-tanzania-is-a-private-company-categorized"
   },
   {
-    "id": "auto_89",
-    "business_name": "Rex Energy – Think solar, think Rex",
+    "id": "auto_86",
+    "business_name": "Solar Power Dar es Salaam",
     "category": "Solar Company",
     "region": "Tanzania",
     "district": "",
-    "headline_en": "Rex Energy – Think solar, think Rex",
+    "headline_en": "Solar Power Dar es Salaam",
     "headline_sw": "",
-    "description_en": "With over 25 years of experience, Rex Energy is Tanzania's leading solar energy contractor providing alternative power solutions in Tanzania.Read more",
+    "description_en": "Power Providers designs, supplies and installs high-quality solar power solutions and provides professional support services for its clients.Read more",
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://rexsolarenergy.com/rex/",
-    "domain": "rexsolarenergy.com",
-    "slug": "rex-energy-think-solar-think-rex"
+    "website": "https://powerproviders.co.tz/solar-power-dar-es-salaam/",
+    "domain": "powerproviders.co.tz",
+    "slug": "solar-power-dar-es-salaam"
   },
   {
-    "id": "auto_90",
+    "id": "auto_87",
     "business_name": "Energy Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1440,7 +1392,23 @@
     "slug": "energy-solutions"
   },
   {
-    "id": "auto_91",
+    "id": "auto_88",
+    "business_name": "Rex Energy – Think solar, think Rex",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Rex Energy – Think solar, think Rex",
+    "headline_sw": "",
+    "description_en": "With over 25 years of experience, Rex Energy is Tanzania's leading solar energy contractor providing alternative power solutions in Tanzania.Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://rexsolarenergy.com/rex/",
+    "domain": "rexsolarenergy.com",
+    "slug": "rex-energy-think-solar-think-rex"
+  },
+  {
+    "id": "auto_89",
     "business_name": "Solar Power Arusha",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1456,7 +1424,7 @@
     "slug": "solar-power-arusha"
   },
   {
-    "id": "auto_92",
+    "id": "auto_90",
     "business_name": "Highedge Solar Tanzania – is a private company categorized ...",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1472,23 +1440,7 @@
     "slug": "highedge-solar-tanzania-is-a-private-company-categorized"
   },
   {
-    "id": "auto_93",
-    "business_name": "Energy Solutions",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Energy Solutions",
-    "headline_sw": "",
-    "description_en": "Home & Office. We provide complete solar installations to homeowners and businesses without the massive cost overhead of big-box solar companies. We are ...Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://gadgetronix.net/energy-solutions/",
-    "domain": "gadgetronix.net",
-    "slug": "energy-solutions"
-  },
-  {
-    "id": "auto_94",
+    "id": "auto_91",
     "business_name": "Photons Energy Ltd – Where Nature turns to Energy",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1504,7 +1456,23 @@
     "slug": "photons-energy-ltd-where-nature-turns-to-energy"
   },
   {
-    "id": "auto_95",
+    "id": "auto_92",
+    "business_name": "Energy Solutions",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Energy Solutions",
+    "headline_sw": "",
+    "description_en": "Home & Office. We provide complete solar installations to homeowners and businesses without the massive cost overhead of big-box solar companies. We are ...Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://gadgetronix.net/energy-solutions/",
+    "domain": "gadgetronix.net",
+    "slug": "energy-solutions"
+  },
+  {
+    "id": "auto_93",
     "business_name": "PowerHut Renewables | Solar Energy Solutions for Tanzania",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1520,23 +1488,7 @@
     "slug": "powerhut-renewables-solar-energy-solutions-for-tanzania"
   },
   {
-    "id": "auto_96",
-    "business_name": "East Africa Imara Trading",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "East Africa Imara Trading",
-    "headline_sw": "",
-    "description_en": "East Africa Imara Trading is a leading solar solutions provider based in Arusha, Tanzania. We are driven by a vision of a sustainable future.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://eastafricaimara.co.tz/",
-    "domain": "eastafricaimara.co.tz",
-    "slug": "east-africa-imara-trading"
-  },
-  {
-    "id": "auto_97",
+    "id": "auto_94",
     "business_name": "AG Energies | Home",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1552,39 +1504,55 @@
     "slug": "ag-energies-home"
   },
   {
+    "id": "auto_95",
+    "business_name": "East Africa Imara Trading",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "East Africa Imara Trading",
+    "headline_sw": "",
+    "description_en": "East Africa Imara Trading is a leading solar solutions provider based in Arusha, Tanzania. We are driven by a vision of a sustainable future.Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://eastafricaimara.co.tz/",
+    "domain": "eastafricaimara.co.tz",
+    "slug": "east-africa-imara-trading"
+  },
+  {
+    "id": "auto_96",
+    "business_name": "Sidai Solar Technology",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Sidai Solar Technology",
+    "headline_sw": "",
+    "description_en": "At Sidai Solar Technology, we provide a range of solutions including larger solar systems for comprehensive energy needs, solar water heaters, solar water pumps ...Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://sidaisolartechnology.co.tz/",
+    "domain": "sidaisolartechnology.co.tz",
+    "slug": "sidai-solar-technology"
+  },
+  {
+    "id": "auto_97",
+    "business_name": "Simusolar – Financed Solutions for Agriculture",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Simusolar – Financed Solutions for Agriculture",
+    "headline_sw": "",
+    "description_en": "We have been providing the services and equipment farmers need to be more productive and to be independent of rain patterns and rising fuel prices, since 2016.Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://simusolar.com/",
+    "domain": "simusolar.com",
+    "slug": "simusolar-financed-solutions-for-agriculture"
+  },
+  {
     "id": "auto_98",
-    "business_name": "Serengeti Electricals – Solar Installations and Electrical ...",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Serengeti Electricals – Solar Installations and Electrical ...",
-    "headline_sw": "",
-    "description_en": "Physical Address. Sokoine Road, Adjacent to UBA Bank, Arusha, Tanzania. Reach Out For Inquiries And Partnerships. Please enable JavaScript in your browser to ...Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://serengetielectricals.co.tz/",
-    "domain": "serengetielectricals.co.tz",
-    "slug": "serengeti-electricals-solar-installations-and-electrical"
-  },
-  {
-    "id": "auto_99",
-    "business_name": "Solar energy",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Solar energy",
-    "headline_sw": "",
-    "description_en": "We don't just install solar systems — we create practical, long-term solutions that help Tanzania shine brighter, one project at a time.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://mutinapower.com/solar-energy/",
-    "domain": "mutinapower.com",
-    "slug": "solar-energy"
-  },
-  {
-    "id": "auto_100",
     "business_name": "Solar Power Mwanza",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1600,7 +1568,7 @@
     "slug": "solar-power-mwanza"
   },
   {
-    "id": "auto_101",
+    "id": "auto_99",
     "business_name": "AG Energies | Home",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1616,7 +1584,7 @@
     "slug": "ag-energies-home"
   },
   {
-    "id": "auto_102",
+    "id": "auto_100",
     "business_name": "Solar Energy installation Services. Contact us. #Tanzania ...",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1632,7 +1600,23 @@
     "slug": "solar-energy-installation-services-contact-us-tanzania"
   },
   {
-    "id": "auto_103",
+    "id": "auto_101",
+    "business_name": "Simusolar – Financed Solutions for Agriculture",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Simusolar – Financed Solutions for Agriculture",
+    "headline_sw": "",
+    "description_en": "We have been providing the services and equipment farmers need to be more productive and to be independent of rain patterns and rising fuel prices, since 2016.Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://simusolar.com/",
+    "domain": "simusolar.com",
+    "slug": "simusolar-financed-solutions-for-agriculture"
+  },
+  {
+    "id": "auto_102",
     "business_name": "Solar Panel Installation",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1648,55 +1632,39 @@
     "slug": "solar-panel-installation"
   },
   {
-    "id": "auto_104",
-    "business_name": "Upo Mwanza? Huna haja ya kuhangaika kupata bidhaa ...",
+    "id": "auto_103",
+    "business_name": "☀️ POWERING MWANZA WITH SUNLIGHT! ☀️ We are ...",
     "category": "Solar Company",
     "region": "Tanzania",
     "district": "",
-    "headline_en": "Upo Mwanza? Huna haja ya kuhangaika kupata bidhaa ...",
+    "headline_en": "☀️ POWERING MWANZA WITH SUNLIGHT! ☀️ We are ...",
     "headline_sw": "",
-    "description_en": "agenergies Upo Mwanza? Huna haja ya kuhangaika kupata bidhaa za sola za ubora wa hali ya juu. Karibu ututembelee katika duka letu lililopo mtaa ...Read more",
+    "description_en": "Work in progress: 5 kW 48 V solar system installation underway — clean power loading ☀️ Get in touch today at 0705102000 and switch to solar with ...Read more",
     "description_sw": "",
     "services": [],
     "products": [],
-    "website": "https://www.instagram.com/p/CR8rGViNwKm/",
+    "website": "https://www.instagram.com/p/DTC1l1ojWe7/",
     "domain": "www.instagram.com",
-    "slug": "upo-mwanza-huna-haja-ya-kuhangaika-kupata-bidhaa"
+    "slug": "powering-mwanza-with-sunlight-we-are"
+  },
+  {
+    "id": "auto_104",
+    "business_name": "Timia Green Energies",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Timia Green Energies",
+    "headline_sw": "",
+    "description_en": "Timia Green Energies is one of the top solar energy companies in Tanzania for installation and maintenance of solar systems for commercial use, ...Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://timiaenergies.co.tz/",
+    "domain": "timiaenergies.co.tz",
+    "slug": "timia-green-energies"
   },
   {
     "id": "auto_105",
-    "business_name": "Contact Us",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Contact Us",
-    "headline_sw": "",
-    "description_en": "Mwanza Office. +255 753 265 532 (Mwanza). Kishiri, Mbugani,Mwanza ... Please Select The Service You Need. Solar Panel Installation, Renewable Energy ...Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://timiaenergies.co.tz/?page_id=68",
-    "domain": "timiaenergies.co.tz",
-    "slug": "contact-us"
-  },
-  {
-    "id": "auto_106",
-    "business_name": "Top 2 Solar Energy Companies in Mwanza, Tanzania",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Top 2 Solar Energy Companies in Mwanza, Tanzania",
-    "headline_sw": "",
-    "description_en": "We found 2 listings in Mwanza · Jeel International lTD. · Millennium Engineers. Sido Area, Dar es Salaam 10412, Mwanza, Tanzania. Verified. +255 733 112 741.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://www.tanzapages.com/category/Solar_energy/city:Mwanza",
-    "domain": "www.tanzapages.com",
-    "slug": "top-2-solar-energy-companies-in-mwanza-tanzania"
-  },
-  {
-    "id": "auto_107",
     "business_name": "Solar Power Mbeya",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1710,6 +1678,38 @@
     "website": "https://powerproviders.co.tz/solar-power-mbeya/",
     "domain": "powerproviders.co.tz",
     "slug": "solar-power-mbeya"
+  },
+  {
+    "id": "auto_106",
+    "business_name": "Solar Installation! 10KW Hybrid System! In Mbeya Region ...",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Solar Installation! 10KW Hybrid System! In Mbeya Region ...",
+    "headline_sw": "",
+    "description_en": "✓ Warranty Miaka 2 ✓ Matumizi yake 100% katika Solar na Power back up systems. Karibu Upate Battery yako ya Solar Leo! Swaminath Trading Tupo ...Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://www.instagram.com/p/C3fM2PVMjFT/",
+    "domain": "www.instagram.com",
+    "slug": "solar-installation-10kw-hybrid-system-in-mbeya-region"
+  },
+  {
+    "id": "auto_107",
+    "business_name": "Simusolar – Financed Solutions for Agriculture",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Simusolar – Financed Solutions for Agriculture",
+    "headline_sw": "",
+    "description_en": "We have been providing the services and equipment farmers need to be more productive and to be independent of rain patterns and rising fuel prices, since 2016.Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://simusolar.com/",
+    "domain": "simusolar.com",
+    "slug": "simusolar-financed-solutions-for-agriculture"
   },
   {
     "id": "auto_108",
@@ -1729,38 +1729,6 @@
   },
   {
     "id": "auto_109",
-    "business_name": "Customer order to Mbeya! Steps solar Panels & Chloride ...",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Customer order to Mbeya! Steps solar Panels & Chloride ...",
-    "headline_sw": "",
-    "description_en": "Customer order to Mbeya! Steps solar Panels & Chloride Exide Batteries for Solar DC installations! more. March 23, 2023.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://www.instagram.com/p/CqImfrasn2t/",
-    "domain": "www.instagram.com",
-    "slug": "customer-order-to-mbeya-steps-solar-panels-chloride"
-  },
-  {
-    "id": "auto_110",
-    "business_name": "Simusolar – Financed Solutions for Agriculture",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Simusolar – Financed Solutions for Agriculture",
-    "headline_sw": "",
-    "description_en": "We have been providing the services and equipment farmers need to be more productive and to be independent of rain patterns and rising fuel prices, since 2016.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://simusolar.com/",
-    "domain": "simusolar.com",
-    "slug": "simusolar-financed-solutions-for-agriculture"
-  },
-  {
-    "id": "auto_111",
     "business_name": "Solar Company in Mbeya - Solar Solution",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1776,55 +1744,39 @@
     "slug": "solar-company-in-mbeya-solar-solution"
   },
   {
+    "id": "auto_110",
+    "business_name": "Solar Panel Installers Freelancers in Tanzania",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Solar Panel Installers Freelancers in Tanzania",
+    "headline_sw": "",
+    "description_en": "AfricaShore has a pool of freelance Solar Panel Installer experts on projects in Tanzania. Our AfricaShore service centres preselect the best Solar Panel ...Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://www.africashore.com/expert/tanzania/solar-panel-installer",
+    "domain": "www.africashore.com",
+    "slug": "solar-panel-installers-freelancers-in-tanzania"
+  },
+  {
+    "id": "auto_111",
+    "business_name": "Directory of Renewable Energy Actors Tanzania",
+    "category": "Solar Company",
+    "region": "Tanzania",
+    "district": "",
+    "headline_en": "Directory of Renewable Energy Actors Tanzania",
+    "headline_sw": "",
+    "description_en": "18 Sept 2020 — Mbeya ... Solar installer. Type of actor: Company. Address: P.O. Box 42227 Dar ...Read more",
+    "description_sw": "",
+    "services": [],
+    "products": [],
+    "website": "https://tarea-tz.org/storage/app/media/downloads/TZ%20Renewable%20Energy%20Actors%20Directory%20-%2005%202021.pdf",
+    "domain": "tarea-tz.org",
+    "slug": "directory-of-renewable-energy-actors-tanzania"
+  },
+  {
     "id": "auto_112",
-    "business_name": "Solar Panel Angles for Tukuyu, Mbeya, TZ",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Solar Panel Angles for Tukuyu, Mbeya, TZ",
-    "headline_sw": "",
-    "description_en": "Fixed tilt. If you're mounting the photovoltaic panels at a stationary angle, such as on your roof, the most efficient angle is 8.05°.Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://solarific.co/tz/mbeya/tukuyu",
-    "domain": "solarific.co",
-    "slug": "solar-panel-angles-for-tukuyu-mbeya-tz"
-  },
-  {
-    "id": "auto_113",
-    "business_name": "Solar water heater installation at HOTEL DESDERIA ...",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Solar water heater installation at HOTEL DESDERIA ...",
-    "headline_sw": "",
-    "description_en": "USE SOLAR AS FUEL GENERATOR SUPER SILENT (No need for fuel generator no Noises) CALL OR WHATSAPP+255769442381 -1KVA (24/7) FOR 2.8M tzs -use all ...Read more",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "https://www.facebook.com/nikusolar/posts/solar-water-heater-installation-at-hotel-desderia-mbeya-we-are-rocking/484775035227104/",
-    "domain": "www.facebook.com",
-    "slug": "solar-water-heater-installation-at-hotel-desderia"
-  },
-  {
-    "id": "auto_114",
-    "business_name": "Tanzania, Mbeya Region - Global Solace, Inc.",
-    "category": "Solar Company",
-    "region": "Tanzania",
-    "district": "",
-    "headline_en": "Tanzania, Mbeya Region - Global Solace, Inc.",
-    "headline_sw": "",
-    "description_en": "GSI is currently researching the installation of solar PV systems in rural areas of South-Western Tanzania well beyond the reaches of the electrical grid.",
-    "description_sw": "",
-    "services": [],
-    "products": [],
-    "website": "http://www.globalsolace.org/where-we-work/tanzania-mbeya-region/",
-    "domain": "www.globalsolace.org",
-    "slug": "tanzania-mbeya-region-global-solace-inc"
-  },
-  {
-    "id": "auto_115",
     "business_name": "Solar Power Dodoma",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1840,7 +1792,7 @@
     "slug": "solar-power-dodoma"
   },
   {
-    "id": "auto_116",
+    "id": "auto_113",
     "business_name": "Reliable Solar Energy Solutions",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1856,7 +1808,7 @@
     "slug": "reliable-solar-energy-solutions"
   },
   {
-    "id": "auto_117",
+    "id": "auto_114",
     "business_name": "Simusolar – Financed Solutions for Agriculture",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1872,7 +1824,7 @@
     "slug": "simusolar-financed-solutions-for-agriculture"
   },
   {
-    "id": "auto_118",
+    "id": "auto_115",
     "business_name": "Solar Panel Installation",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1888,7 +1840,7 @@
     "slug": "solar-panel-installation"
   },
   {
-    "id": "auto_119",
+    "id": "auto_116",
     "business_name": "Solar Energy Tanzania #Tanzania #Dodoma #zanzibar ...",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1904,7 +1856,7 @@
     "slug": "solar-energy-tanzania-tanzania-dodoma-zanzibar"
   },
   {
-    "id": "auto_120",
+    "id": "auto_117",
     "business_name": "Dom Energy Solutions and Designing",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1920,7 +1872,7 @@
     "slug": "dom-energy-solutions-and-designing"
   },
   {
-    "id": "auto_121",
+    "id": "auto_118",
     "business_name": "Dom Energy Solutions and Designing Ltd ...",
     "category": "Solar Company",
     "region": "Tanzania",
@@ -1936,7 +1888,7 @@
     "slug": "dom-energy-solutions-and-designing-ltd"
   },
   {
-    "id": "auto_122",
+    "id": "auto_119",
     "business_name": "Solar Company in Dodoma - Solar Solution",
     "category": "Solar Company",
     "region": "Tanzania",
