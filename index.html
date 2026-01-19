@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Solar Tanzania Directory</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Solar Tanzania Directory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
@@ -12,79 +12,90 @@ body {
   background: #f1f4f9;
 }
 
-header {
-  background: linear-gradient(135deg, #0d47a1, #1565c0);
-  color: white;
-  padding: 25px;
-  text-align: center;
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 60vh;
+  background: url("https://images.unsplash.com/photo-1509391366360-2e959784a276") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-box {
-  background: white;
-  padding: 15px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-
-.search-box input {
+.hero .overlay {
+  background: rgba(13, 71, 161, 0.8);
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  height: 100%;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.hero h1 {
+  font-size: 42px;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 18px;
+  margin: 10px 0 25px;
+}
+
+.hero-search {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.hero-search input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+}
+
+/* CONTAINER */
 .container {
-  padding: 20px;
+  padding: 25px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
+/* CARD */
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 18px;
+  padding: 18px;
+  border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   transition: all 0.2s ease;
-  border-left: 5px solid #0d47a1;
-  cursor: pointer;
+  border-top: 4px solid #0d47a1;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12);
 }
 
-.card h3 {
+.card h2 {
   margin: 0;
+  color: #0d47a1;
   font-size: 18px;
-  color: #0d47a1;
 }
 
-.badge {
-  display: inline-block;
-  background: #e3f2fd;
-  color: #0d47a1;
-  padding: 3px 8px;
+.card small {
+  color: #777;
   font-size: 12px;
-  border-radius: 20px;
-  margin-top: 6px;
-}
-
-.card h4 {
-  font-size: 14px;
-  margin: 10px 0 5px;
-  color: #333;
 }
 
 .card p {
   font-size: 13px;
-  color: #555;
-  line-height: 1.4;
+  color: #444;
+  line-height: 1.5;
 }
 
 .actions {
@@ -95,39 +106,59 @@ header {
 
 .btn {
   flex: 1;
+  padding: 10px;
   text-align: center;
-  padding: 8px;
-  background: #25D366;
-  color: white;
-  text-decoration: none;
   border-radius: 6px;
   font-size: 13px;
+  color: white;
+  text-decoration: none;
 }
 
-.btn.secondary {
+.btn.whatsapp {
+  background: #25D366;
+}
+
+.btn.call {
   background: #1565c0;
 }
-</style>
 
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #0d47a1;
+  color: white;
+  font-size: 13px;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-  <h1>Solar Tanzania Directory</h1>
-  <p>Find trusted solar companies in Tanzania</p>
+<!-- HERO -->
+<header class="hero">
+  <div class="overlay">
+    <h1>Solar Tanzania Directory</h1>
+    <p>Find trusted solar companies across Tanzania</p>
+
+    <div class="hero-search">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search company, city or service..."
+      />
+    </div>
+  </div>
 </header>
 
-<div class="search-box">
-  <input 
-    type="text" 
-    id="searchInput" 
-    placeholder="Search solar company..."
-  />
-</div>
-
+<!-- LISTINGS -->
 <div class="container" id="listings">
   Loading companies...
 </div>
+
+<footer>
+  © 2026 Solar Tanzania Directory • Powered by Zanzibaba Digital
+</footer>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -144,46 +175,48 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   function renderCompanies(list) {
-  container.innerHTML = "";
+    container.innerHTML = "";
 
-  if (list.length === 0) {
-    container.innerHTML = "<p>No companies found.</p>";
-    return;
+    if (list.length === 0) {
+      container.innerHTML = "<p>No companies found.</p>";
+      return;
+    }
+
+    list.forEach(c => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <h2>${c.business_name}</h2>
+        <small>${c.category || "Solar Company"} • ${c.region || "Tanzania"}</small>
+
+        <p style="font-style:italic;color:#333;margin:8px 0;">
+          ${c.headline_en || ""}
+        </p>
+
+        <p>
+          ${(c.description_en || "").substring(0,140)}...
+        </p>
+
+        <div class="actions">
+          <a class="btn whatsapp" 
+             href="https://wa.me/?text=Hello I found you on Solar Tanzania Directory" 
+             target="_blank">
+            WhatsApp
+          </a>
+          <a class="btn call" 
+             href="company.html?slug=${c.slug}">
+            View
+          </a>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
   }
 
-  list.forEach(c => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-   card.innerHTML = `
-  <h2 style="margin:0;color:#0d47a1;">${c.business_name}</h2>
-  <small style="color:#555;">
-    ${c.category} • ${c.region}
-  </small>
-
-  <p style="font-style:italic;color:#333;margin:8px 0;">
-    ${c.headline_en}
-  </p>
-
-  <p style="color:#555;font-size:14px;">
-    ${c.description_en.substring(0,180)}...
-  </p>
-
-  <div style="margin-top:10px;">
-    <a class="btn" href="company.html?slug=${c.slug}">
-      View Company
-    </a>
-  </div>
-`;
-
-    container.appendChild(card);
-  });
-}
-
-  // Search Debug Version
   searchInput.addEventListener("keyup", function () {
     const query = this.value.toLowerCase();
-    console.log("Searching:", query);
 
     const filtered = companies.filter(c =>
       (c.business_name || "").toLowerCase().includes(query) ||
@@ -192,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
       (c.description_en || "").toLowerCase().includes(query)
     );
 
-    console.log("Found:", filtered.length);
     renderCompanies(filtered);
   });
 });
