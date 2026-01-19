@@ -5,7 +5,18 @@
 <title>Solar Tanzania Directory</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  
 <style>
+
+/* SECTION TITLES */
+.section-title {
+  text-align: center;
+  margin: 50px 0 20px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #0d47a1;
+}
+
 /* BASE SETUP */
 .top-banner {
   background: linear-gradient(90deg, #ff9800, #f57c00);
@@ -302,6 +313,22 @@ body {
   color: #0d47a1;
 }
 
+  .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.actions {
+  margin-top: auto;     /* hii ndiyo siri */
+}
+
+
 .badges {
   margin: 8px 0;
 }
@@ -356,8 +383,9 @@ footer {
   font-size: 13px;
 }
 .btn.lead {
-  background: linear-gradient(135deg, #ffb300, #f57c00);
-  font-weight: 700;
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  font-weight: 600;
+  text-align: center;
 }
 
 </style>
@@ -422,6 +450,14 @@ footer {
   </div>
 </header>
 
+<h2 class="section-title">⭐ Featured Solar Companies in Tanzania</h2>
+<div class="container" id="featured"></div>
+
+<h2 class="section-title">🆕 Newly Added Solar Companies</h2>
+<div class="container" id="newly-added"></div>
+
+<h2 class="section-title">📂 All Solar Companies</h2>
+<div class="container" id="listings"></div>
 
 
 <div class="container" id="listings">Loading companies...</div>
@@ -497,10 +533,11 @@ document.addEventListener("DOMContentLoaded", function () {
           <p>${(c.description_en || "").substring(0,120)}...</p>
 
           <div class="actions">
-            <a class="btn lead"
-              href="lead.html?company=${encodeURIComponent(c.business_name)}">
-              Request Quote
-            </a>
+<a class="btn lead"
+   href="company.html?company=${encodeURIComponent(c.business_name)}">
+   View
+</a>
+
           </div>
         </div>
       `;
@@ -508,6 +545,33 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(card);
     });
   }
+<h2 class="section-title">📰 Solar News & Tips Tanzania</h2>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <h2>Why Solar Energy is Growing Fast in Tanzania</h2>
+      <p>Discover why more homes and businesses are switching to solar power and how it saves costs.</p>
+      <a class="btn lead" href="#">Read Article</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h2>Best Solar Panels for Zanzibar Climate</h2>
+      <p>Learn which panels perform best in coastal and humid environments like Zanzibar.</p>
+      <a class="btn lead" href="#">Read Article</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h2>Solar Batteries: Lithium vs Gel Batteries</h2>
+      <p>Compare battery technologies and choose the best option for your solar system.</p>
+      <a class="btn lead" href="#">Read Article</a>
+    </div>
+  </div>
+</div>
 
   function renderPagination() {
     pagination.innerHTML = "";
