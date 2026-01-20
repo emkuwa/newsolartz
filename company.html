@@ -120,68 +120,59 @@
 </div>
 
 <script>
-function getSlug() {
+document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
-  return params.get("slug");
-}
+  const companyName = params.get("company");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const slug = getSlug();
+  if (!companyName) {
+    document.body.innerHTML = "<h2 style='text-align:center'>No company selected</h2>";
+    return;
+  }
 
-  fetch("data/companies.json?v=" + Date.now())
+  const decodedName = decodeURIComponent(companyName).trim().toLowerCase();
+
+  fetch("./data/companies.json")
     .then(res => res.json())
-    .then(companies => {
+    .then(data => {
+      const companies = Array.isArray(data) ? data : [data];
 
-      if (!Array.isArray(companies)) {
-        companies = [companies];
-      }
-
-      console.log("Companies loaded:", companies);
-      console.log("Slug:", slug);
-
-      const company = companies.find(c => c.slug === slug);
+      const company = companies.find(c =>
+        (c.business_name || "").toLowerCase().trim() === decodedName
+      );
 
       if (!company) {
         document.body.innerHTML = "<h2 style='text-align:center'>Company not found</h2>";
         return;
       }
 
-      // Header
-      document.getElementById("companyName").textContent = company.business_name;
-      document.getElementById("companyHeadline").textContent = company.headline_en;
+      // Render company profile
+      document.body.innerHTML = `
+        <div style="max-width:900px;margin:40px auto;font-family:sans-serif">
+          <h1>${company.business_name}</h1>
+          <p><strong>Region:</strong> ${company.region || "Tanzania"}</p>
+          <p><strong>Category:</strong> ${company.category || "Solar Company"}</p>
+          <p>${company.description_en || "No description available."}</p>
 
-      // About
-      document.getElementById("description").textContent = company.description_en;
-
-      // Services
-      const servicesBox = document.getElementById("services");
-      servicesBox.innerHTML = "";
-      company.services.forEach(s => {
-        servicesBox.innerHTML += `<span class="tag">${s}</span>`;
-      });
-
-      // Products
-      const productsBox = document.getElementById("products");
-      productsBox.innerHTML = "";
-      company.products.forEach(p => {
-        productsBox.innerHTML += `<span class="tag">${p}</span>`;
-      });
-
-      // CTA Buttons
-      const whatsappBtn = document.getElementById("whatsappBtn");
-      const callBtn = document.getElementById("callBtn");
-
-      whatsappBtn.href =
-        "https://wa.me/?text=Hello%20I%20found%20you%20from%20Solar%20Tanzania%20Directory";
-      callBtn.href = "tel:+255700000000";
+          <a href="index.html" style="
+            display:inline-block;
+            margin-top:20px;
+            padding:10px 18px;
+            background:#ff9800;
+            color:white;
+            text-decoration:none;
+            border-radius:5px;
+            font-weight:600;
+          ">← Back to Directory</a>
+        </div>
+      `;
     })
     .catch(err => {
       console.error(err);
-      document.body.innerHTML =
-        "<h2 style='text-align:center'>Error loading company data</h2>";
+      document.body.innerHTML = "<h2 style='text-align:center'>Failed to load company data</h2>";
     });
 });
 </script>
+
 
 
 </body>
