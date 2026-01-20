@@ -371,11 +371,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderFeatured() {
-    featuredContainer.innerHTML = "";
-    companies.slice(0,4).forEach(c => {
-      featuredContainer.appendChild(createCard(c));
-    });
-  }
+  featuredContainer.innerHTML = "";
+
+  // Tengeneza copy ya companies ili asiharibu list ya original
+  const shuffled = [...companies].sort(() => 0.5 - Math.random());
+
+  // Chukua 4 za random
+  const featured = shuffled.slice(0, 4);
+
+  featured.forEach(c => {
+    featuredContainer.appendChild(createCard(c));
+  });
+}
+
 
   function renderPage(page) {
     currentPage = page;
