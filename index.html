@@ -252,16 +252,28 @@ footer{
     <h1>Find Trusted Solar Companies in Tanzania</h1>
     <p>Search installers, suppliers & solar providers near you</p>
 
-    <div class="hero-search">
-      <select>
-        <option>Category</option>
-        <option>Installers</option>
-        <option>Panels</option>
-        <option>Batteries</option>
-      </select>
-      <input type="text" placeholder="City or Region">
-      <button>Search</button>
-    </div>
+  <div class="hero-search">
+  <select id="categorySelect">
+    <option value="all">All Categories</option>
+    <option value="installers">Installers</option>
+    <option value="panels">Solar Panels</option>
+    <option value="batteries">Batteries</option>
+    <option value="inverters">Inverters</option>
+    <option value="engineering">Solar Engineering</option>
+  </select>
+
+  <select id="regionSelect">
+    <option value="all">All Regions</option>
+    <option value="Dar es Salaam">Dar es Salaam</option>
+    <option value="Zanzibar">Zanzibar</option>
+    <option value="Arusha">Arusha</option>
+    <option value="Mwanza">Mwanza</option>
+    <option value="Dodoma">Dodoma</option>
+  </select>
+
+  <button id="searchBtn">Search</button>
+</div>
+
   </div>
 </header>
 
@@ -297,6 +309,30 @@ footer{
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+const categorySelect = document.getElementById("categorySelect");
+const regionSelect = document.getElementById("regionSelect");
+const searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", () => {
+  const selectedCategory = categorySelect.value.toLowerCase();
+  const selectedRegion = regionSelect.value.toLowerCase();
+
+  const filtered = companies.filter(c => {
+    const categoryMatch =
+      selectedCategory === "all" ||
+      (c.category || "").toLowerCase().includes(selectedCategory);
+
+    const regionMatch =
+      selectedRegion === "all" ||
+      (c.region || "").toLowerCase().includes(selectedRegion);
+
+    return categoryMatch && regionMatch;
+  });
+
+  // Onyesha matokeo kwenye All Solar Companies
+  renderPageFromList(filtered);
+});
+
   const featuredContainer = document.getElementById("featured");
   const allContainer = document.getElementById("listings");
   const pagination = document.getElementById("pagination");
