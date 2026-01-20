@@ -308,30 +308,11 @@ footer{
 </footer>
 
 <script>
+  
 document.addEventListener("DOMContentLoaded", function () {
-const categorySelect = document.getElementById("categorySelect");
-const regionSelect = document.getElementById("regionSelect");
-const searchBtn = document.getElementById("searchBtn");
-
-searchBtn.addEventListener("click", () => {
-  const selectedCategory = categorySelect.value.toLowerCase();
-  const selectedRegion = regionSelect.value.toLowerCase();
-
-  const filtered = companies.filter(c => {
-    const categoryMatch =
-      selectedCategory === "all" ||
-      (c.category || "").toLowerCase().includes(selectedCategory);
-
-    const regionMatch =
-      selectedRegion === "all" ||
-      (c.region || "").toLowerCase().includes(selectedRegion);
-
-    return categoryMatch && regionMatch;
-  });
-
-  // Onyesha matokeo kwenye All Solar Companies
-  renderPageFromList(filtered);
-});
+  const categorySelect = document.getElementById("categorySelect");
+  const regionSelect = document.getElementById("regionSelect");
+  const searchBtn = document.getElementById("searchBtn");
 
   const featuredContainer = document.getElementById("featured");
   const allContainer = document.getElementById("listings");
@@ -345,22 +326,40 @@ searchBtn.addEventListener("click", () => {
     .then(res => res.json())
     .then(data => {
       companies = Array.isArray(data) ? data : [data];
+
       renderFeatured();
       renderPage(1);
       renderPagination();
+
+      // 🔥 SEARCH BUTTON IKO SAHIHI HAPA NDANI
+      searchBtn.addEventListener("click", () => {
+        const selectedCategory = categorySelect.value.toLowerCase();
+        const selectedRegion = regionSelect.value.toLowerCase();
+
+        const filtered = companies.filter(c => {
+          const categoryMatch =
+            selectedCategory === "all" ||
+            (c.category || "").toLowerCase().includes(selectedCategory);
+
+          const regionMatch =
+            selectedRegion === "all" ||
+            (c.region || "").toLowerCase().includes(selectedRegion);
+
+          return categoryMatch && regionMatch;
+        });
+
+        renderPageFromList(filtered);
+      });
     });
 
   function createCard(c) {
     const card = document.createElement("div");
     card.className = "card";
-
     card.innerHTML = `
       <div class="card-body">
         <h2>${c.business_name}</h2>
         <small>${c.region || "Tanzania"}</small>
-
         <p>${(c.description_en || "").substring(0,120)}...</p>
-
         <div class="actions">
           <a class="btn" href="company.html?company=${encodeURIComponent(c.business_name)}">
             View
@@ -371,7 +370,6 @@ searchBtn.addEventListener("click", () => {
     return card;
   }
 
-  // Featured (4 only)
   function renderFeatured() {
     featuredContainer.innerHTML = "";
     companies.slice(0,4).forEach(c => {
@@ -379,7 +377,6 @@ searchBtn.addEventListener("click", () => {
     });
   }
 
-  // All companies (with pagination)
   function renderPage(page) {
     currentPage = page;
     allContainer.innerHTML = "";
@@ -394,40 +391,34 @@ searchBtn.addEventListener("click", () => {
   }
 
   function renderPageFromList(list) {
-  allContainer.innerHTML = "";
-  pagination.innerHTML = ""; // Ondoa pagination wakati wa search
+    allContainer.innerHTML = "";
+    pagination.innerHTML = "";
 
-  if (list.length === 0) {
-    allContainer.innerHTML = "<p style='text-align:center;'>No companies found.</p>";
-    return;
+    if (list.length === 0) {
+      allContainer.innerHTML = "<p style='text-align:center;'>No companies found.</p>";
+      return;
+    }
+
+    list.forEach(c => {
+      allContainer.appendChild(createCard(c));
+    });
+
+    window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
   }
-
-  list.forEach(c => {
-    allContainer.appendChild(createCard(c));
-  });
-
-  window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
-}
-
 
   function renderPagination() {
     pagination.innerHTML = "";
     const pageCount = Math.ceil(companies.length / itemsPerPage);
 
-    // Prev
     const prev = document.createElement("button");
     prev.textContent = "← Prev";
     prev.disabled = currentPage === 1;
     prev.onclick = () => {
-      if (currentPage > 1) {
-        renderPage(currentPage - 1);
-        renderPagination();
-        window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
-      }
+      renderPage(currentPage - 1);
+      renderPagination();
     };
     pagination.appendChild(prev);
 
-    // Page numbers
     for (let i = 1; i <= pageCount; i++) {
       const btn = document.createElement("button");
       btn.textContent = i;
@@ -436,25 +427,21 @@ searchBtn.addEventListener("click", () => {
       btn.onclick = () => {
         renderPage(i);
         renderPagination();
-        window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
       };
       pagination.appendChild(btn);
     }
 
-    // Next
     const next = document.createElement("button");
     next.textContent = "Next →";
     next.disabled = currentPage === pageCount;
     next.onclick = () => {
-      if (currentPage < pageCount) {
-        renderPage(currentPage + 1);
-        renderPagination();
-        window.scrollTo({ top: allContainer.offsetTop - 100, behavior: "smooth" });
-      }
+      renderPage(currentPage + 1);
+      renderPagination();
     };
     pagination.appendChild(next);
   }
 });
+
 </script>
 
   
